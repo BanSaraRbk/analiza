@@ -1,0 +1,203 @@
+
+// #define DEBUG
+// #define CALCU_TIMESTAMP_OFFSET_BY_GAUSS
+
+// Set Analysising Parameter
+const Int_t kEventScan = 1000;
+const Int_t kTimeWindow = 100;     // ns
+const Double_t kClkToNs = 8.0;   // ns
+
+struct Event{
+  ULong64_t evtn;
+  Double_t timestamp;
+  Double_t amax;
+  Double_t energy;
+};
+
+
+void chkTimeResolution2Digi()
+{
+  TFile *fin = gFile;
+  if (!fin || !fin->IsOpen()) {
+    std::cout << "No ROOT file is currently open." << std::endl;
+    std::cout << "Example: TFile::Open(\"data.root\"); ana30(\"Trace_Tree\");" << std::endl;
+    return;
+  }
+
+  TTree *tree = (TTree*)fin->Get("tr");
+  if (!tree) {
+    std::cout << "Tree 'tr' not found in this file" << std::endl;
+    return;
+  }
+  
+  UChar_t module;
+  UChar_t channel;
+  Double_t timestampNs;
+  UShort_t energy;
+  ULong64_t userInfo0;
+  
+  tree->SetBranchAddress("Module",&module);
+  tree->SetBranchAddress("Channel",&channel);
+  tree->SetBranchAddress("TimestampNs",&timestampNs);
+  tree->SetBranchAddress("Energy",&energy);
+  tree->SetBranchAddress("UserInfo0",&userInfo0);
+  
+  ULong64_t nEntries = tree->GetEntries();
+  std::cout << "Total Events: " << nEntries << std::endl;
+  
+  // For Analysis
+  const Int_t kTargetChannel = 0;
+  Double_t timestampInit = 0;
+  Double_t timestampEnd = 0;
+  Double_t timestampPre = 0;
+  Int_t    counter_frequency = 0;
+  Double_t frequencyAccum = 0;
+  Double_t frequencyAve = 0;
+
+
+  std::vector<Event> eventMod0;
+  std::vector<Event> eventMod1;
+
+  // Event Loading
+  for (int i = 0; i < nEntries; i++)
+  {
+    if (i % 10000 == 0){
+      std::cout << "\rLoding Entry: " << i << "/" << nEntries << std::flush;
+    }
+    tree->GetEntry(i);
+    if ( i == 0 ) timestampInit = timestampNs;
+    if ( i == nEntries - 1 ) timestampEnd = timestampNs;
+    
+    // Select Channel
+    if ( channel != kTargetChannel ) continue;
+    Event event_tmp;
+    event_tmp.evtn = i;
+    event_tmp.timestamp = timestampNs;
+    event_tmp.energy = energy;
+    event_tmp.amax = userInfo0;
+    if ( module == 0){
+      eventMod0.push_back(event_tmp);
+    } else if ( module == 1 ){
+      eventMod1.push_back(event_tmp);
+    }
+  }
+  cout << "\rLoding Entry: " << nEntries << "/" << nEntries << endl;
+
+
+
+  // Caluculate Timestamp Offset
+#ifdef CALCU_TIMESTAMP_OFFSET_BY_GAUSS
+  cout << "Caluculate Timestamp Offset..." << endl;
+  TH1D *hTimestampDiff = new TH1D("h1","clk count offset",2000,-1000,1000);
+  for ( int i = 0; i < kEventScan; i++){
+    Event eventMod0_tmp = eventMod0.at(i);
+    Double_t timestampMod0_tmp = eventMod0_tmp.timestamp;
+    for ( int j = 0; j < kEventScan; j++){
+      Event eventMod1_tmp = eventMod1.at(j);
+      Double_t timestampMod1_tmp = eventMod1_tmp.timestamp;
+      Double_t timestamp_diff = timestampMod0_tmp - timestampMod1_tmp;
+      hTimestampDiff->Fill(timestamp_diff / kClkToNs); // clk count
+    }
+  }
+  TCanvas* cv = new TCanvas("cv","cv");
+  hTimestampDiff->Draw();
+  cv->SetLogy(1);
+  hTimestampDiff->Fit("gaus", "Q");
+  
+  TF1 *fitFunc = hTimestampDiff->GetFunction("gaus");
+  Double_t meanClockDiff = 0;
+  if (fitFunc) {
+    meanClockDiff = fitFunc->GetParameter(1); 
+  } else {
+    std::cout << "Warning: Fit failed! Using histogram mean instead." << std::endl;
+    meanClockDiff = hTimestampDiff->GetMean();
+  }
+  Double_t timestampOffset = meanClockDiff * kClkToNs;
+  cout << "Timestamp Offset      : " << timestampOffset << " ns" << endl;
+#else
+    Event eventMod0_tmp = eventMod0.at(0);
+    Event eventMod1_tmp = eventMod1.at(0);
+    Double_t timestampMod0_tmp = eventMod0_tmp.timestamp;
+    Double_t timestampMod1_tmp = eventMod1_tmp.timestamp;
+    Double_t timestampOffset = timestampMod0_tmp - timestampMod1_tmp;
+    cout << "Timestamp Offset    : " << timestampOffset << endl;
+#endif
+
+  // event mutching
+  cout << "Starting Event Matching... " << endl;
+  cout << "Time Window           : " << kTimeWindow << " ns" << endl;
+  ULong64_t nEntriesMod0 = eventMod0.size();
+  ULong64_t nEntriesMod1 = eventMod1.size();
+  
+  TH2D *hEnergyCorr = new TH2D("h3","Energy correlation: Mod0 Vs Mod1",400,0,4000,400,0,4000);
+  TH2D *hAmaxCorr = new TH2D("h4","Amax correlation: Mod0 Vs Mod1",400,4000,8000,400,4000,8000);
+  TH1D *hEnergyDiff = new TH1D("h5","Energy Diff: Mod0 - Mod1",400,4000,4000);
+  TH1D *hAmaxDiff = new TH1D("h6","Amax Diff: Mod0 - Mod1",400,-1000,1000);
+  TH1D *hTimeResolution = new TH1D("h7","time resolution",400,-200,200);
+  
+  int  idx_Mod0 = 0;
+  int  idx_Mod1 = 0;
+  int eventMatch =0;
+  
+  while(idx_Mod0 < nEntriesMod0 && idx_Mod1 < nEntriesMod1){
+    Event eventMod0_tmp = eventMod0.at(idx_Mod0);
+    Event eventMod1_tmp = eventMod1.at(idx_Mod1);
+    Double_t timestampMod0_cor = eventMod0_tmp.timestamp - timestampOffset; 
+    Double_t timestampMod1_tmp = eventMod1_tmp.timestamp;
+    Double_t timestamp_diff = timestampMod0_cor - timestampMod1_tmp;
+
+    if (abs(timestamp_diff) < kTimeWindow){
+      hEnergyCorr->Fill(eventMod1_tmp.energy,eventMod0_tmp.energy);
+      hAmaxCorr->Fill(eventMod1_tmp.amax,eventMod0_tmp.amax);
+      hEnergyDiff->Fill(eventMod0_tmp.energy - eventMod1_tmp.energy);
+      hAmaxDiff->Fill(eventMod0_tmp.amax - eventMod1_tmp.amax);
+      hTimeResolution->Fill(timestamp_diff);
+      eventMatch++;
+      idx_Mod0++;
+      idx_Mod1++;
+    } else if ( timestamp_diff <=  -kTimeWindow) {
+#ifdef DEBUG
+      cout << "skipped Mod0 " << "Event Number: " << eventMod0_tmp.evtn  << " index: " << idx_Mod0 << endl;
+#endif
+      idx_Mod0++;
+    } else if (timestamp_diff >= kTimeWindow) {
+#ifdef DEBUG
+      cout << "skipped Mod1 " << "Event Number: " << eventMod1_tmp.evtn  << " index: " << idx_Mod1 << endl;
+#endif
+      idx_Mod1++;
+    }
+  }
+  
+  cout << "Entries Mod0 Channel 0: " << nEntriesMod0 << endl;
+  cout << "Entries Mod1 Channel 0: " << nEntriesMod1 << endl;
+  cout << "Matched Event         : " << eventMatch << endl;
+
+  TCanvas *c1 = new TCanvas("c1","c1");
+  c1->cd();
+  hEnergyCorr->Draw("COLZ");
+  TCanvas *c2 = new TCanvas("c2","c2");
+  c2->cd();
+  hAmaxCorr->Draw("COLZ");
+  TCanvas *c3 = new TCanvas("c3","c3");
+  c3->cd();
+  hEnergyDiff->Draw();
+  TCanvas *c4 = new TCanvas("c4","c4");
+  c4->cd();
+  hAmaxDiff->Draw();
+  TCanvas *c5 = new TCanvas("c5","c5");
+  c5->cd();
+  hTimeResolution->Draw();
+
+  
+  Double_t runTime = timestampEnd - timestampInit; // ns
+  runTime /= 1e9;                                  // s
+  cout << "DAQ acquisition time  : " << runTime << " s" << std::endl;
+  cout << "Trigger Rate          : " << nEntriesMod0 / runTime << " cps" << std::endl;
+
+  hTimeResolution->Fit("gaus");
+  TF1 *fitFunc2 = hTimeResolution->GetFunction("gaus");
+  Double_t sigma2 = fitFunc2->GetParameter(2);
+  Double_t fwhm = sigma2 * 2.35;
+  cout << "***************************************" << endl;
+  cout << "FWHM                  : " << fwhm << " ns" << endl;
+}

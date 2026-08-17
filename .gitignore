@@ -1,0 +1,7 @@
+*.root
+data/
+main_project.zip
+*.zip
+*.root
+*data/
+**/data
