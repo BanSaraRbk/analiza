@@ -58,18 +58,20 @@ TH1F *LinearityAnalyzer::ReadRefferenceSpectrum(const std::string &filename)
     return h1;
 }
 
-TH1F *LinearityAnalyzer::Process(tr *eventReader)
+TH1F *LinearityAnalyzer::Process(tr *eventReader, int No_Channels)
 {
     // Implement the processing logic for the eventReader
     // This function will analyze the data and fill the necessary histograms
     std::cout << "Processing data from event reader..." << std::endl;
     // Example: Fill h1 with processed data
     // h1->Fill(...);
-    const int nBins = 8192;
+    const int nBins = 4096;
     const double minEnergy = 0.0;
     const double maxEnergy = 32768.0;
+    TString h_name = Form("h_spectrum_ch%d", No_Channels);
+    TString h_title = Form("Energy Spectrum - Channel %d;ADC Channels;Counts", No_Channels);
 
-    h2 = new TH1F("mySpectrum", "Energy Spectrum;Energy [channels];Counts",
+    h2 = new TH1F(h_name, h_title,
                   nBins, minEnergy, maxEnergy);
 
     // h2->Scale(1.0 / h2->GetEntries()); // Normalize the histogram
@@ -77,13 +79,17 @@ TH1F *LinearityAnalyzer::Process(tr *eventReader)
     for (int i = 0; i < eventReader->fChain->GetEntries(); i++)
     {
         eventReader->fChain->GetEntry(i);
-        h2->Fill(eventReader->energy);
+
+        if (eventReader->channel == No_Channels)
+        {
+            h2->Fill(eventReader->energy);
+        }
 
         // Process each entry and fill h1 accordingly
         // Example: h1->Fill(eventReader->someValue);
     }
 
-    Draw(h2);
+    Draw(h2, No_Channels);
     return h2;
 }
 
@@ -127,7 +133,7 @@ std::pair<std::vector<double>, std::vector<double>> LinearityAnalyzer::FitAllPea
         int xPeak = peaks[i].first;
         int yPeak = peaks[i].second;
 
-        double delta = 30.0;
+        double delta = 400.0;
         double xMin = xPeak - delta;
         double xMax = xPeak + delta;
 
@@ -151,14 +157,98 @@ std::pair<std::vector<double>, std::vector<double>> LinearityAnalyzer::FitAllPea
 
     return std::make_pair(peak_means, energy_resolution);
 }
-void LinearityAnalyzer::Draw(TH1F *h)
+void LinearityAnalyzer::Draw(TH1F *h, int No_channels)
+
 {
-    TCanvas *c = new TCanvas(Form("c_%s", h->GetName()), h->GetTitle(), 800, 600);
+
+    if (!h)
+        return;
+
+    TString canvas_name = Form("c_ch%d_%s", No_channels, h->GetName());
+    TString canvas_title = Form("Channel %d - %s", No_channels, h->GetTitle());
+
+    TCanvas *c = new TCanvas(canvas_name, canvas_title, 800, 600);
+    c->cd();
 
     h->SetLineWidth(2);
-
     h->Draw("HIST");
 
     TSpectrum *s = new TSpectrum();
     s->Search(h, 1, "", 0.05);
+}
+
+void LinearityAnalyzer::compute_R_2(int N, double a, double b, std::vector<double> fitted_means, std::vector<double> reff_means)
+{
+    std::cout << "Valoarea lui N este " << N << std::endl;
+
+    double sum_y;
+    for (size_t i = 0; i < N; i++)
+    {
+        sum_y += fitted_means[i];
+    }
+    double y_mean = sum_y / N;
+    double SS_res = 0.0;
+    double SS_tot = 0.0;
+
+    for (size_t j = 0; j < N; ++j)
+    {
+        double y_real = fitted_means[j];
+        double x_real = reff_means[j];
+
+        double y_compute = a * x_real + b;
+
+        // std::cout << y_compute << std::endl;
+
+        SS_res = SS_res + std::pow(y_real - y_compute, 2);
+        SS_tot = SS_tot + std::pow(y_real - y_mean, 2);
+    }
+
+    double R2 = (SS_tot != 0.0) ? (1.0 - (SS_res / SS_tot)) : 0.0;
+
+    // // // 4. Afisarea rezultatelor
+    std::cout << "\n========== REZULTATE FIT & STATISTICA ==========\n";
+    //  std::cout << "Numar de puncte (N): " << N << "\n";
+    std::cout << "Parametru p0 (Offset): " << b << "\n";
+    std::cout << "Parametru p1 (Panta) : " << a << "\n";
+    std::cout << "Media y (y_mean)     : " << y_mean << "\n";
+    std::cout << "SS_res               : " << SS_res << "\n";
+    std::cout << "SS_tot               : " << SS_tot << "\n";
+    std::cout << "R^2 (Determinare)    : " << R2 << "\n";
+    std::cout << "================================================\n";
+}
+
+// void LinearityAnalyzer::ShowGraph(std::vector<double> x, std::vector<double> y)
+// {
+//     int N = std::min(x.size(), y.zie());
+
+//     TCanvas *c = new TCanvas(Form("c_%s", h->GetName()), h->GetTitle(), 800, 600);
+
+//     TGraph *gr = new TGraph();
+
+//     for(size_t i = 0;i<N;i++)
+
+//     {
+//         double x_axis=x[i];
+//         double y_axis=y[i];
+
+//         gr->SetPoint(i,i+1)
+
+//     }
+// }
+void LinearityAnalyzer::process_linearity(const std::string &csv_file, tr *t, int N_channels)
+{
+
+    LinearityAnalyzer linearityAnalyzer;
+    TH1F *h_refference = linearityAnalyzer.ReadRefferenceSpectrum(csv_file);
+
+    std::vector<std::pair<int, int>> Reff_Spectrum;
+    std::vector<std::pair<int, int>> energy_Spectrum;
+
+    std::vector<TH1F *> h_energy(N_channels);
+
+    for (size_t i = 0; i < N_channels; i++)
+    {
+        h_energy[i] = linearityAnalyzer.Process(t, i);
+    }
+    std::cout << "Successfully processed " << N_channels << " channels." << std::endl;
 }
