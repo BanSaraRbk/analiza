@@ -1,0 +1,3 @@
+Using file: data/20260818_test_multiple_sigma4_mpr_2channels.root
+ReadStreamerInfo, class:vector<int32_t>, illegal uid=-2
+Cate canale doriti??

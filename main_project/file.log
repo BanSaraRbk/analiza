@@ -1,0 +1,21 @@
+Using file: data/20260817_test_multiple_sigma4_countsmulte.root
+ReadStreamerInfo, class:vector<int32_t>, illegal uid=-2
+Cate canale doriti??
+Reading reference spectrum from: output_SIGMA.csv
+Loaded 16384 samples into reference spectrum histogram.
+Finding peaks in spectrum: hRefSpectrum
+Found 32 peaks.
+Processing data from event reader...
+Finding peaks in spectrum: h_spectrum_ch0
+Found 32 peaks.
+Valoarea lui N este 32
+
+========== REZULTATE FIT & STATISTICA ==========
+Parametru p0 (Offset): -204.972
+Parametru p1 (Panta) : 1.90666
+Media y (y_mean)     : 15525.9
+SS_res               : 644388
+SS_tot               : 2.47996e+09
+R^2 (Determinare)    : 0.99974
+================================================
+Successfully processed 1 channels.

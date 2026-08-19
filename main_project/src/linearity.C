@@ -10,6 +10,9 @@
 #include <TSpectrum.h>
 #include <TVirtualFitter.h>
 #include <TF1.h>
+#include <TGraph.h>
+#include <TF1.h>
+
 LinearityAnalyzer::LinearityAnalyzer()
 {
 }
@@ -204,8 +207,6 @@ void LinearityAnalyzer::compute_R_2(int N, double a, double b, std::vector<doubl
     }
 
     double R2 = (SS_tot != 0.0) ? (1.0 - (SS_res / SS_tot)) : 0.0;
-
-    // // // 4. Afisarea rezultatelor
     std::cout << "\n========== REZULTATE FIT & STATISTICA ==========\n";
     //  std::cout << "Numar de puncte (N): " << N << "\n";
     std::cout << "Parametru p0 (Offset): " << b << "\n";
@@ -242,13 +243,95 @@ void LinearityAnalyzer::process_linearity(const std::string &csv_file, tr *t, in
     TH1F *h_refference = linearityAnalyzer.ReadRefferenceSpectrum(csv_file);
 
     std::vector<std::pair<int, int>> Reff_Spectrum;
-    std::vector<std::pair<int, int>> energy_Spectrum;
+    Reff_Spectrum = linearityAnalyzer.FindPeaks(h_refference);
+
+    std::pair<std::vector<double>, std::vector<double>> reff_results = linearityAnalyzer.FitAllPeaks(h_refference, Reff_Spectrum);
+    std::vector<double> reff_means = reff_results.first;
+    std::vector<double> reff_resolution = reff_results.second;
 
     std::vector<TH1F *> h_energy(N_channels);
+    std::vector<std::vector<std::pair<int, int>>> energy_Spectrum(N_channels);
+    std::vector<std::vector<double>> fitted_means(N_channels);
+    std::vector<std::vector<double>> energy_resolution(N_channels);
+    std::vector<TGraph *> gr(N_channels);
+    std::vector<TGraph *> gr_resolution(N_channels);
+
+    TCanvas *c_lin = new TCanvas("c_lin", "Linearity_fit", 800, 600);
+
+    TCanvas *c_resolution = new TCanvas("c_resolution", "Energy Resolution", 800, 600);
+
+    int nCols = std::ceil(std::sqrt(N_channels));
+    int nRows = std::ceil(static_cast<double>(N_channels) / nCols);
+    c_lin->Divide(nCols, nRows);
+    c_resolution->Divide(nCols, nRows);
+
+    std::vector<double> a(N_channels, 0.0);
+    std::vector<double> b(N_channels, 0.0);
+    // std::vector<double>
 
     for (size_t i = 0; i < N_channels; i++)
     {
         h_energy[i] = linearityAnalyzer.Process(t, i);
+        energy_Spectrum[i] = linearityAnalyzer.FindPeaks(h_energy[i]);
+        auto fitted_results = linearityAnalyzer.FitAllPeaks(h_energy[i], energy_Spectrum[i]);
+
+        fitted_means[i] = fitted_results.first;
+        energy_resolution[i] = fitted_results.second;
+
+        gr[i] = new TGraph();
+        gr[i]->SetName(Form("gr_ch_%zu", i));
+        gr[i]->SetTitle(Form("Channel %zu Linearity;Reference Amplitude;Channel Amplitude", i));
+
+        gr_resolution[i] = new TGraph();
+        gr_resolution[i]->SetName(Form("gr_ch_%zu", i));
+        gr_resolution[i]->SetTitle(Form("Channel %zu Energy_resolution;No of peaks;Difference", i));
+
+        size_t N = std::min(Reff_Spectrum.size(), fitted_means[i].size());
+
+        for (size_t j = 0; j < N; ++j)
+        {
+            double x = reff_means[j];
+            double y = fitted_means[i][j];
+            gr[i]->SetPoint(j, x, y);
+        }
+
+        gr[i]->Fit("pol1", "Q");
+        TF1 *myfit = gr[i]->GetFunction("pol1");
+
+        if (myfit)
+        {
+            b[i] = myfit->GetParameter(0); // Offset (b)
+            a[i] = myfit->GetParameter(1); // Slope (a)
+
+            linearityAnalyzer.compute_R_2(N, a[i], b[i], fitted_means[i], reff_means);
+        }
+
+        for (size_t k = 0; k < N; ++k)
+        {
+            double x = reff_resolution[i]; // Reference energy resolution
+            double y = energy_resolution[i][k];
+
+            // std::cout << "Fitted energy resolution for peak " << i + 1 << ": " << y << std::endl;
+            // std::cout << "Reference energy resolution for peak " << i + 1 << ": " << x << std::endl;
+            // std::cout << "Difference " << i + 1 << ": " << x - y << std::endl;
+            gr_resolution[i]->SetPoint(k, k + 1, x - y);
+        }
+
+        c_lin->cd(i + 1);
+        gr[i]->SetMarkerStyle(20);
+        gr[i]->Draw("APL");
+
+        // Draw to c_resolution pad
+        c_resolution->cd(i + 1);
+        gr_resolution[i]->SetMarkerStyle(20);
+        gr_resolution[i]->Draw("APL");
+        gr_resolution[i]->GetYaxis()->SetRangeUser(-0.1, 0.1);
+
+        // // // 4. Afisarea rezultatelor
     }
-    std::cout << "Successfully processed " << N_channels << " channels." << std::endl;
+    c_lin->Update();
+    c_resolution->Update();
+
+    std::cout
+        << "Successfully processed " << N_channels << " channels." << std::endl;
 }

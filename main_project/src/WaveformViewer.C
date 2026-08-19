@@ -28,7 +28,7 @@ void WaveformViewer::InitHistograms()
         hWaveforms[ch] = new TH2D(
             Form("h_wave_ch%d", ch),
             Form("Waveform Channel %d;Sample;Amplitude", ch),
-            400, 0, 500,
+            400, 0, 3000,
             400, 7000, 20000);
     }
 }
