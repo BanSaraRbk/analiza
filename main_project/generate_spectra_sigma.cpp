@@ -15,8 +15,8 @@ void generate_spectra_sigma()
         return;
     }
 
-    const int kTotalEntries = 16384;
-    const int kInterval = 500;
+    const int kTotalEntries = 16384 / 5; // pentru MPR ul lui mihai
+    const int kInterval = 500 / 5;
     const double kSigma = 4.0; // Requested sigma = 4
     const double kTwoSigmaSq = 2.0 * kSigma * kSigma;
     const int kWindowWidth = static_cast<int>(4.0 * kSigma); // Compute within +/- 4*sigma

@@ -68,7 +68,7 @@ TH1F *LinearityAnalyzer::Process(tr *eventReader, int No_Channels)
     std::cout << "Processing data from event reader..." << std::endl;
     // Example: Fill h1 with processed data
     // h1->Fill(...);
-    const int nBins = 4096;
+    const int nBins = 8000;
     const double minEnergy = 0.0;
     const double maxEnergy = 32768.0;
     TString h_name = Form("h_spectrum_ch%d", No_Channels);
@@ -107,7 +107,7 @@ std::vector<std::pair<int, int>> LinearityAnalyzer::FindPeaks(TH1F *h)
     std::cout << "Finding peaks in spectrum: " << h->GetName() << std::endl;
 
     TSpectrum s;
-    int nPeaks = s.Search(h, 1, "", 0.1);
+    int nPeaks = s.Search(h, 4, "", 0.1);
     std::cout << "Found " << nPeaks << " peaks." << std::endl;
 
     std::vector<std::pair<int, int>> detectedPeaks;
@@ -136,7 +136,7 @@ std::pair<std::vector<double>, std::vector<double>> LinearityAnalyzer::FitAllPea
         int xPeak = peaks[i].first;
         int yPeak = peaks[i].second;
 
-        double delta = 400.0;
+        double delta = 70.0;
         double xMin = xPeak - delta;
         double xMax = xPeak + delta;
 
@@ -150,12 +150,12 @@ std::pair<std::vector<double>, std::vector<double>> LinearityAnalyzer::FitAllPea
         double mean_value = fit->GetParameter(1);
         peak_means.push_back(mean_value);
 
-        energy_resolution.push_back((fit->GetParameter(2) * 2.355) / mean_value); // FWHM = 2.355 * Sigma
+        energy_resolution.push_back(((fit->GetParameter(2) * 2.355) / mean_value)); // FWHM = 2.355 * Sigma
 
-        // std::cout << "Peak " << i + 1 << " -> Mean: " << fit->GetParameter(1)
-        //           << ", Sigma: " << fit->GetParameter(2)
+        std::cout << "Peak " << i + 1 << " -> Mean: " << fit->GetParameter(1)
+                  << ", Sigma: " << fit->GetParameter(2)
 
-        //           << std::endl;
+                  << std::endl;
     }
 
     return std::make_pair(peak_means, energy_resolution);
@@ -242,8 +242,19 @@ void LinearityAnalyzer::process_linearity(const std::string &csv_file, tr *t, in
     LinearityAnalyzer linearityAnalyzer;
     TH1F *h_refference = linearityAnalyzer.ReadRefferenceSpectrum(csv_file);
 
-    std::vector<std::pair<int, int>> Reff_Spectrum;
-    Reff_Spectrum = linearityAnalyzer.FindPeaks(h_refference);
+    auto Reff_Spectrum = linearityAnalyzer.FindPeaks(h_refference);
+
+    std::vector<int> peak_position;
+    std::vector<int> peak_amplitude;
+
+    peak_position.reserve(Reff_Spectrum.size());
+    peak_amplitude.reserve(Reff_Spectrum.size());
+
+    for (const auto &[pos, amp] : Reff_Spectrum)
+    {
+        peak_position.push_back(pos);
+        peak_amplitude.push_back(amp);
+    }
 
     std::pair<std::vector<double>, std::vector<double>> reff_results = linearityAnalyzer.FitAllPeaks(h_refference, Reff_Spectrum);
     std::vector<double> reff_means = reff_results.first;
@@ -280,7 +291,7 @@ void LinearityAnalyzer::process_linearity(const std::string &csv_file, tr *t, in
 
         gr[i] = new TGraph();
         gr[i]->SetName(Form("gr_ch_%zu", i));
-        gr[i]->SetTitle(Form("Channel %zu Linearity;Reference Amplitude;Channel Amplitude", i));
+        gr[i]->SetTitle(Form("Channel %zu Linearity;Reference Amplitude;Fitted means", i));
 
         gr_resolution[i] = new TGraph();
         gr_resolution[i]->SetName(Form("gr_ch_%zu", i));
@@ -308,9 +319,12 @@ void LinearityAnalyzer::process_linearity(const std::string &csv_file, tr *t, in
 
         for (size_t k = 0; k < N; ++k)
         {
-            double x = reff_resolution[i]; // Reference energy resolution
+            double x = reff_resolution[k]; // Reference energy resolution
             double y = energy_resolution[i][k];
 
+            std::cout << "Channel [" << i << "] | Peak [" << k << "] | "
+                      << "Energy Resolution: " << y << " | "
+                      << "Reference: " << x << std::endl;
             // std::cout << "Fitted energy resolution for peak " << i + 1 << ": " << y << std::endl;
             // std::cout << "Reference energy resolution for peak " << i + 1 << ": " << x << std::endl;
             // std::cout << "Difference " << i + 1 << ": " << x - y << std::endl;

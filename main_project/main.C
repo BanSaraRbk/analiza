@@ -18,8 +18,8 @@ int main(int argc, char **argv)
     // std::freopen("output.txt", "a", stderr);
     gErrorIgnoreLevel = kWarning;
 
-    const char *root_filename = (argc > 1) ? argv[1] : "data/20260818_test_multiple_sigma4_mpr_2channels.root";
-    std::string csv_file = "output_SIGMA.csv";
+    const char *root_filename = (argc > 1) ? argv[1] : "data/20260820_same_amplitude.root";
+    std::string csv_file = "output_same_amplitude.csv";
 
     tr t(root_filename);
     if (!t.fChain)

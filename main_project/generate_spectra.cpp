@@ -12,8 +12,8 @@ void generate_spectra()
         std::cerr << "Error: Could not open file for writing." << std::endl;
     }
 
-    const int kTotalEntries = 16384;
-    const int kInterval = 500;
+    const int kTotalEntries = 16384 / 5;
+    const int kInterval = 500 / 5;
 
     TCanvas *c1 = new TCanvas("c1", "5-Peak Pattern", 1200, 600);
     c1->SetGrid();
@@ -21,9 +21,9 @@ void generate_spectra()
     TH1F *h1 = new TH1F("h1", "5-Peak Pattern;Sample Index;Amplitude", kTotalEntries, 0, kTotalEntries);
 
     int pulse_value = 65535;
-    const int kStep = 100;
+    const int kStep = 500;
 
-    for (int i = 0; i < kTotalEntries; ++i)
+    for (int i = 100; i < kTotalEntries; ++i)
     {
         int current_val = 0;
 
@@ -31,7 +31,7 @@ void generate_spectra()
         {
             current_val = pulse_value;
         }
-        // if (i % (kInterval * 5) == 0)
+        // if (i % (kInterval * 1) == 0)
         // {
         //     pulse_value += kStep;
         // }

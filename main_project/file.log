@@ -1,21 +1,194 @@
-Using file: data/20260817_test_multiple_sigma4_countsmulte.root
+Using file: data/20260820_sigma1_1_4.root
+Error in <TTree::SetBranchAddress>: unknown branch -> module
 ReadStreamerInfo, class:vector<int32_t>, illegal uid=-2
 Cate canale doriti??
-Reading reference spectrum from: output_SIGMA.csv
-Loaded 16384 samples into reference spectrum histogram.
+Reading reference spectrum from: output.csv
+Loaded 3176 samples into reference spectrum histogram.
 Finding peaks in spectrum: hRefSpectrum
-Found 32 peaks.
+Found 31 peaks.
+Peak 1 -> Mean: 100.334, Sigma: 0.236798
+Peak 2 -> Mean: 200.326, Sigma: 0.244759
+Peak 3 -> Mean: 300.321, Sigma: 0.248733
+Peak 4 -> Mean: 400.321, Sigma: 0.249048
+Peak 5 -> Mean: 500.32, Sigma: 0.249533
+Peak 6 -> Mean: 600.5, Sigma: 0.25
+Peak 7 -> Mean: 700.5, Sigma: 0.25
+Peak 8 -> Mean: 800.5, Sigma: 0.25
+Peak 9 -> Mean: 900.5, Sigma: 0.25
+Peak 10 -> Mean: 1000.5, Sigma: 0.25
+Peak 11 -> Mean: 1100.5, Sigma: 0.25
+Peak 12 -> Mean: 1200.5, Sigma: 0.25
+Peak 13 -> Mean: 1300.5, Sigma: 0.25
+Peak 14 -> Mean: 1400.5, Sigma: 0.25
+Peak 15 -> Mean: 1500.5, Sigma: 0.25
+Peak 16 -> Mean: 1600.5, Sigma: 0.25
+Peak 17 -> Mean: 1700.5, Sigma: 0.25
+Peak 18 -> Mean: 1800.5, Sigma: 0.25
+Peak 19 -> Mean: 1900.5, Sigma: 0.25
+Peak 20 -> Mean: 2000.5, Sigma: 0.25
+Peak 21 -> Mean: 2100.5, Sigma: 0.25
+Peak 22 -> Mean: 2200.5, Sigma: 0.25
+Peak 23 -> Mean: 2300.5, Sigma: 0.25
+Peak 24 -> Mean: 2400.5, Sigma: 0.25
+Peak 25 -> Mean: 2500.5, Sigma: 0.25
+Peak 26 -> Mean: 2600.5, Sigma: 0.25
+Peak 27 -> Mean: 2700.5, Sigma: 0.25
+Peak 28 -> Mean: 2800.5, Sigma: 0.25
+Peak 29 -> Mean: 2900.5, Sigma: 0.25
+Peak 30 -> Mean: 3000.5, Sigma: 0.25
+Peak 31 -> Mean: 3100.5, Sigma: 0.25
+Peak 32 -> Mean: 100.334, Sigma: 0.236798
 Processing data from event reader...
 Finding peaks in spectrum: h_spectrum_ch0
-Found 32 peaks.
-Valoarea lui N este 32
+Found 31 peaks.
+Peak 1 -> Mean: 152.758, Sigma: 1.47821
+Peak 2 -> Mean: 306.19, Sigma: 1.48189
+Peak 3 -> Mean: 459.64, Sigma: 1.51248
+Peak 4 -> Mean: 613.012, Sigma: 1.5793
+Peak 5 -> Mean: 766.557, Sigma: 1.51365
+Peak 6 -> Mean: 920.095, Sigma: 1.63192
+Peak 7 -> Mean: 1073.65, Sigma: 1.64943
+Peak 8 -> Mean: 1227.31, Sigma: 1.58248
+Peak 9 -> Mean: 1380.96, Sigma: 1.57574
+Peak 10 -> Mean: 1534.41, Sigma: 1.64411
+Peak 11 -> Mean: 1687.9, Sigma: 1.54448
+Peak 12 -> Mean: 1841.7, Sigma: 1.51855
+Peak 13 -> Mean: 1995.17, Sigma: 1.55912
+Peak 14 -> Mean: 2149.04, Sigma: 1.54521
+Peak 15 -> Mean: 2302.78, Sigma: 1.60081
+Peak 16 -> Mean: 2456.28, Sigma: 1.65558
+Peak 17 -> Mean: 2610.24, Sigma: 1.658
+Peak 18 -> Mean: 2764.01, Sigma: 1.59097
+Peak 19 -> Mean: 2917.95, Sigma: 1.63197
+Peak 20 -> Mean: 3072.11, Sigma: 1.64183
+Peak 21 -> Mean: 3226.45, Sigma: 1.61752
+Peak 22 -> Mean: 3381.5, Sigma: 1.63978
+Peak 23 -> Mean: 3537.58, Sigma: 1.57425
+Peak 24 -> Mean: 3694.7, Sigma: 1.66613
+Peak 25 -> Mean: 3853.66, Sigma: 1.56962
+Peak 26 -> Mean: 4013.94, Sigma: 1.61127
+Peak 27 -> Mean: 4175.76, Sigma: 1.61581
+Peak 28 -> Mean: 4338.89, Sigma: 1.67061
+Peak 29 -> Mean: 4502.77, Sigma: 1.59877
+Peak 30 -> Mean: 4667.67, Sigma: 1.59207
+Peak 31 -> Mean: 4833.05, Sigma: 1.63678
+Peak 32 -> Mean: 613.012, Sigma: 1.5793
+Valoarea lui N este 31
 
 ========== REZULTATE FIT & STATISTICA ==========
-Parametru p0 (Offset): -204.972
-Parametru p1 (Panta) : 1.90666
-Media y (y_mean)     : 15525.9
-SS_res               : 644388
-SS_tot               : 2.47996e+09
-R^2 (Determinare)    : 0.99974
+Parametru p0 (Offset): -17.0403
+Parametru p1 (Panta) : 1.55168
+Media y (y_mean)     : 2466.38
+SS_res               : 5490.42
+SS_tot               : 5.97221e+07
+R^2 (Determinare)    : 0.999908
 ================================================
-Successfully processed 1 channels.
+Channel [0] | Peak [0] | Energy Resolution: 0.0227888 | Reference: 0.00555805
+Channel [0] | Peak [1] | Energy Resolution: 0.0113976 | Reference: 0.00287734
+Channel [0] | Peak [2] | Energy Resolution: 0.00774932 | Reference: 0.00195046
+Channel [0] | Peak [3] | Energy Resolution: 0.00606718 | Reference: 0.00146509
+Channel [0] | Peak [4] | Energy Resolution: 0.0046502 | Reference: 0.00117455
+Channel [0] | Peak [5] | Energy Resolution: 0.00417694 | Reference: 0.000980433
+Channel [0] | Peak [6] | Energy Resolution: 0.00361794 | Reference: 0.000840471
+Channel [0] | Peak [7] | Energy Resolution: 0.00303651 | Reference: 0.000735478
+Channel [0] | Peak [8] | Energy Resolution: 0.00268716 | Reference: 0.000653803
+Channel [0] | Peak [9] | Energy Resolution: 0.00252337 | Reference: 0.000588456
+Channel [0] | Peak [10] | Energy Resolution: 0.0021549 | Reference: 0.000534984
+Channel [0] | Peak [11] | Energy Resolution: 0.00194178 | Reference: 0.000490421
+Channel [0] | Peak [12] | Energy Resolution: 0.00184031 | Reference: 0.00045271
+Channel [0] | Peak [13] | Energy Resolution: 0.0016933 | Reference: 0.000420386
+Channel [0] | Peak [14] | Energy Resolution: 0.0016371 | Reference: 0.000392369
+Channel [0] | Peak [15] | Energy Resolution: 0.00158731 | Reference: 0.000367854
+Channel [0] | Peak [16] | Energy Resolution: 0.00149587 | Reference: 0.000346222
+Channel [0] | Peak [17] | Energy Resolution: 0.00135554 | Reference: 0.000326993
+Channel [0] | Peak [18] | Energy Resolution: 0.00131712 | Reference: 0.000309787
+Channel [0] | Peak [19] | Energy Resolution: 0.00125858 | Reference: 0.000294301
+Channel [0] | Peak [20] | Energy Resolution: 0.00118064 | Reference: 0.00028029
+Channel [0] | Peak [21] | Energy Resolution: 0.001142 | Reference: 0.000267553
+Channel [0] | Peak [22] | Energy Resolution: 0.00104799 | Reference: 0.000255923
+Channel [0] | Peak [23] | Energy Resolution: 0.00106199 | Reference: 0.000245261
+Channel [0] | Peak [24] | Energy Resolution: 0.000959209 | Reference: 0.000235453
+Channel [0] | Peak [25] | Energy Resolution: 0.000945341 | Reference: 0.000226399
+Channel [0] | Peak [26] | Energy Resolution: 0.000911267 | Reference: 0.000218015
+Channel [0] | Peak [27] | Energy Resolution: 0.000906752 | Reference: 0.00021023
+Channel [0] | Peak [28] | Energy Resolution: 0.000836177 | Reference: 0.000202982
+Channel [0] | Peak [29] | Energy Resolution: 0.000803256 | Reference: 0.000196217
+Channel [0] | Peak [30] | Energy Resolution: 0.000797553 | Reference: 0.000189889
+Processing data from event reader...
+Finding peaks in spectrum: h_spectrum_ch1
+Found 31 peaks.
+Peak 1 -> Mean: 160.475, Sigma: 1.56399
+Peak 2 -> Mean: 321.498, Sigma: 1.56056
+Peak 3 -> Mean: 482.457, Sigma: 1.58862
+Peak 4 -> Mean: 643.551, Sigma: 1.61824
+Peak 5 -> Mean: 804.778, Sigma: 1.65931
+Peak 6 -> Mean: 965.796, Sigma: 1.53662
+Peak 7 -> Mean: 1127.03, Sigma: 1.68399
+Peak 8 -> Mean: 1288.28, Sigma: 1.56254
+Peak 9 -> Mean: 1449.47, Sigma: 1.54196
+Peak 10 -> Mean: 1610.52, Sigma: 1.62011
+Peak 11 -> Mean: 1771.58, Sigma: 1.6092
+Peak 12 -> Mean: 1932.86, Sigma: 1.63422
+Peak 13 -> Mean: 2093.93, Sigma: 1.56532
+Peak 14 -> Mean: 2255.54, Sigma: 1.6906
+Peak 15 -> Mean: 2416.76, Sigma: 1.61428
+Peak 16 -> Mean: 2578.05, Sigma: 1.57942
+Peak 17 -> Mean: 2739.68, Sigma: 1.61901
+Peak 18 -> Mean: 2900.97, Sigma: 1.62125
+Peak 19 -> Mean: 3062.49, Sigma: 1.66437
+Peak 20 -> Mean: 3224.58, Sigma: 1.70958
+Peak 21 -> Mean: 3386.83, Sigma: 1.57828
+Peak 22 -> Mean: 3549.93, Sigma: 1.59644
+Peak 23 -> Mean: 3714.65, Sigma: 1.58543
+Peak 24 -> Mean: 3880.64, Sigma: 1.68381
+Peak 25 -> Mean: 4048.54, Sigma: 1.67204
+Peak 26 -> Mean: 4217.89, Sigma: 1.54234
+Peak 27 -> Mean: 4388.44, Sigma: 1.55839
+Peak 28 -> Mean: 4560.63, Sigma: 1.71158
+Peak 29 -> Mean: 4732.97, Sigma: 1.62108
+Peak 30 -> Mean: 4906.82, Sigma: 1.67367
+Peak 31 -> Mean: 5080.81, Sigma: 1.80443
+Warning in <Fit>: Fit data is empty 
+Peak 32 -> Mean: 65, Sigma: 1
+Valoarea lui N este 31
+
+========== REZULTATE FIT & STATISTICA ==========
+Parametru p0 (Offset): -19.9901
+Parametru p1 (Panta) : 1.63093
+Media y (y_mean)     : 2590.27
+SS_res               : 7464.41
+SS_tot               : 6.59801e+07
+R^2 (Determinare)    : 0.999887
+================================================
+Channel [1] | Peak [0] | Energy Resolution: 0.0229517 | Reference: 0.00555805
+Channel [1] | Peak [1] | Energy Resolution: 0.0114312 | Reference: 0.00287734
+Channel [1] | Peak [2] | Energy Resolution: 0.00775448 | Reference: 0.00195046
+Channel [1] | Peak [3] | Energy Resolution: 0.00592175 | Reference: 0.00146509
+Channel [1] | Peak [4] | Energy Resolution: 0.00485559 | Reference: 0.00117455
+Channel [1] | Peak [5] | Energy Resolution: 0.00374689 | Reference: 0.000980433
+Channel [1] | Peak [6] | Energy Resolution: 0.0035188 | Reference: 0.000840471
+Channel [1] | Peak [7] | Energy Resolution: 0.00285637 | Reference: 0.000735478
+Channel [1] | Peak [8] | Energy Resolution: 0.00250527 | Reference: 0.000653803
+Channel [1] | Peak [9] | Energy Resolution: 0.00236902 | Reference: 0.000588456
+Channel [1] | Peak [10] | Energy Resolution: 0.00213914 | Reference: 0.000534984
+Channel [1] | Peak [11] | Energy Resolution: 0.00199113 | Reference: 0.000490421
+Channel [1] | Peak [12] | Energy Resolution: 0.00176048 | Reference: 0.00045271
+Channel [1] | Peak [13] | Energy Resolution: 0.00176515 | Reference: 0.000420386
+Channel [1] | Peak [14] | Energy Resolution: 0.00157303 | Reference: 0.000392369
+Channel [1] | Peak [15] | Energy Resolution: 0.00144277 | Reference: 0.000367854
+Channel [1] | Peak [16] | Energy Resolution: 0.00139169 | Reference: 0.000346222
+Channel [1] | Peak [17] | Energy Resolution: 0.00131613 | Reference: 0.000326993
+Channel [1] | Peak [18] | Energy Resolution: 0.00127987 | Reference: 0.000309787
+Channel [1] | Peak [19] | Energy Resolution: 0.00124856 | Reference: 0.000294301
+Channel [1] | Peak [20] | Energy Resolution: 0.00109745 | Reference: 0.00028029
+Channel [1] | Peak [21] | Energy Resolution: 0.00105907 | Reference: 0.000267553
+Channel [1] | Peak [22] | Energy Resolution: 0.00100513 | Reference: 0.000255923
+Channel [1] | Peak [23] | Energy Resolution: 0.00102184 | Reference: 0.000245261
+Channel [1] | Peak [24] | Energy Resolution: 0.000972612 | Reference: 0.000235453
+Channel [1] | Peak [25] | Energy Resolution: 0.000861147 | Reference: 0.000226399
+Channel [1] | Peak [26] | Energy Resolution: 0.000836291 | Reference: 0.000218015
+Channel [1] | Peak [27] | Energy Resolution: 0.00088382 | Reference: 0.00021023
+Channel [1] | Peak [28] | Energy Resolution: 0.000806606 | Reference: 0.000202982
+Channel [1] | Peak [29] | Energy Resolution: 0.00080327 | Reference: 0.000196217
+Channel [1] | Peak [30] | Energy Resolution: 0.00083637 | Reference: 0.000189889
+Successfully processed 2 channels.
