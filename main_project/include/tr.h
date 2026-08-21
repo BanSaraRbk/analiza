@@ -30,7 +30,7 @@ public:
    UChar_t channel;
    UShort_t energy;
    UShort_t energy_short;
-   Double_t timestamp_ns;
+   ULong64_t timestamp;
    ULong64_t flags;
    ULong64_t user_info[4];
    Bool_t has_waveform;
@@ -67,7 +67,7 @@ public:
    TBranch *b_channel;                 ///<!
    TBranch *b_energy;                  ///<!
    TBranch *b_energy_short;            ///<!
-   TBranch *b_timestamp_ns;            ///<!
+   TBranch *b_timestamp;               ///<!
    TBranch *b_flags;                   ///<!
    TBranch *b_user_info;               ///<!
    TBranch *b_has_waveform;            ///<!

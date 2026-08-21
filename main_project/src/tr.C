@@ -106,7 +106,7 @@ void tr::Init(TTree *tree)
    fChain->SetBranchAddress("waveform", &analog_probe1, &b_analog_probe1);
 
    // fChain->SetBranchAddress("energy_short", &energy_short, &b_energy_short);
-   // fChain->SetBranchAddress("timestamp_ns", &timestamp_ns, &b_timestamp_ns);
+   fChain->SetBranchAddress("timestamp", &timestamp, &b_timestamp);
    // fChain->SetBranchAddress("flags", &flags, &b_flags);
    // fChain->SetBranchAddress("user_info", user_info, &b_user_info);
    // fChain->SetBranchAddress("has_waveform", &has_waveform, &b_has_waveform);
