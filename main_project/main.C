@@ -19,7 +19,7 @@ int main(int argc, char **argv)
     // std::freopen("output.txt", "a", stderr);
     gErrorIgnoreLevel = kWarning;
 
-    const char *root_filename = (argc > 1) ? argv[1] : "data/20260820_countrate1_timestamp.root";
+    const char *root_filename = (argc > 1) ? argv[1] : "data/20260713_slave_16channels_1.root";
     std::string csv_file = "output_same_amplitude.csv";
 
     tr t(root_filename);
@@ -56,4 +56,5 @@ int main(int argc, char **argv)
 // g++ -o main  main.C src/tr.C src/WaveformViewer.C src/linearity.C `root-config --cflags` `root-config --libs` -lSpectrum
 // ./main 2>&1 | tee file.log
 
+// g++ -o main  main.C src/tr.C src/WaveformViewer.C src/linearity.C src/timestamp.C `root-config --cflags` `root-config --libs` -lSpectrum
 // git add . ':!*.zip' ':!**/*.zip' ':!*.root' ':!**/*.root' ':!data/**' ':!**/data/**'

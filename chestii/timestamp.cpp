@@ -26,7 +26,7 @@ void timestamp()
     tree->SetBranchAddress("channel", &channel);
 
     TH1F *hist1 = new TH1F("hist1", "CSV Reference", 10000, 900, 1100);
-    TH1F *hist2 = new TH1F("hist2", "ROOT Tree Energy", 100, -10, 100);
+    TH1F *hist2 = new TH1F("hist2", "ROOT Tree Energy", 100, -10, 1000);
 
     Long64_t nEntries = tree->GetEntries();
 
