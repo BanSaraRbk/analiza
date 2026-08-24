@@ -19,8 +19,8 @@ int main(int argc, char **argv)
     // std::freopen("output.txt", "a", stderr);
     gErrorIgnoreLevel = kWarning;
 
-    const char *root_filename = (argc > 1) ? argv[1] : "data/20260713_slave_16channels_1.root";
-    std::string csv_file = "output_same_amplitude.csv";
+    const char *root_filename = (argc > 1) ? argv[1] : "data/20260814_test_multiple_peaks_4sigma.root";
+    std::string csv_file = "output_SIGMA.csv";
 
     tr t(root_filename);
     if (!t.fChain)
@@ -32,9 +32,9 @@ int main(int argc, char **argv)
     std::cout << "Cate canale doriti??" << std::endl;
     std::cin >> N_channels;
     //  int N_channels = 2;
-    // LinearityAnalyzer analyzer;
+    LinearityAnalyzer analyzer;
 
-    // analyzer.process_linearity(csv_file, &t, N_channels);
+    analyzer.process_linearity(csv_file, &t, N_channels);
 
     // std::fflush(stdout);
     // std::fflush(stderr);

@@ -1,5 +1,87 @@
-Using file: data/20260713_slave_16channels_1.root
+Using file: data/20260814_test_multiple_peaks_4sigma.root
 Error in <TTree::SetBranchAddress>: unknown branch -> module
 ReadStreamerInfo, class:vector<int32_t>, illegal uid=-2
 Cate canale doriti??
+Reading reference spectrum from: output_SIGMA.csv
+Loaded 3276 samples into reference spectrum histogram.
+Finding peaks in spectrum: hRefSpectrum
+Found 32 peaks.
+Peak 1 -> Mean: 100.5, Sigma: 4
+Peak 2 -> Mean: 200.5, Sigma: 4
+Peak 3 -> Mean: 300.5, Sigma: 4
+Peak 4 -> Mean: 400.5, Sigma: 4
+Peak 5 -> Mean: 500.5, Sigma: 4
+Peak 6 -> Mean: 600.5, Sigma: 4
+Peak 7 -> Mean: 700.5, Sigma: 4
+Peak 8 -> Mean: 800.5, Sigma: 4
+Peak 9 -> Mean: 900.5, Sigma: 4
+Peak 10 -> Mean: 1000.5, Sigma: 4
+Peak 11 -> Mean: 1100.5, Sigma: 4
+Peak 12 -> Mean: 1200.5, Sigma: 4
+Peak 13 -> Mean: 1300.5, Sigma: 4
+Peak 14 -> Mean: 1400.5, Sigma: 4
+Peak 15 -> Mean: 1500.5, Sigma: 4
+Peak 16 -> Mean: 1600.5, Sigma: 4
+Peak 17 -> Mean: 1700.5, Sigma: 4
+Peak 18 -> Mean: 1800.5, Sigma: 4
+Peak 19 -> Mean: 1900.5, Sigma: 4
+Peak 20 -> Mean: 2000.5, Sigma: 4
+Peak 21 -> Mean: 2100.5, Sigma: 4
+Peak 22 -> Mean: 2200.5, Sigma: 4
+Peak 23 -> Mean: 2300.5, Sigma: 4
+Peak 24 -> Mean: 2400.5, Sigma: 4
+Peak 25 -> Mean: 2500.5, Sigma: 4
+Peak 26 -> Mean: 2600.5, Sigma: 4
+Peak 27 -> Mean: 2700.5, Sigma: 4
+Peak 28 -> Mean: 2800.5, Sigma: 4
+Peak 29 -> Mean: 2900.5, Sigma: 4
+Peak 30 -> Mean: 3000.5, Sigma: 4
+Peak 31 -> Mean: 3100.5, Sigma: 4
+Peak 32 -> Mean: 3200.5, Sigma: 4
+Processing data from event reader...
+Finding peaks in spectrum: h_spectrum_ch0
+Found 32 peaks.
+Peak 1 -> Mean: 928.906, Sigma: 8.10564
+Peak 2 -> Mean: 1861.2, Sigma: 8.51966
+Peak 3 -> Mean: 2792.79, Sigma: 7.70862
+Peak 4 -> Mean: 3724.15, Sigma: 7.72109
+Peak 5 -> Mean: 4655.94, Sigma: 7.83119
+Peak 6 -> Mean: 5587.18, Sigma: 6.9833
+Peak 7 -> Mean: 6518.87, Sigma: 7.95109
+Peak 8 -> Mean: 7451.13, Sigma: 7.27117
+Peak 9 -> Mean: 8382.69, Sigma: 8.16896
+Peak 10 -> Mean: 9313.69, Sigma: 7.4524
+Peak 11 -> Mean: 10245.3, Sigma: 7.51419
+Peak 12 -> Mean: 11175.4, Sigma: 8.13272
+Peak 13 -> Mean: 12108.4, Sigma: 6.97574
+Peak 14 -> Mean: 13039.5, Sigma: 7.86209
+Peak 15 -> Mean: 13971.5, Sigma: 7.7737
+Peak 16 -> Mean: 14903.2, Sigma: 7.92303
+Peak 17 -> Mean: 15835, Sigma: 7.86416
+Peak 18 -> Mean: 16769.7, Sigma: 7.16238
+Peak 19 -> Mean: 17709, Sigma: 7.83414
+Peak 20 -> Mean: 18659.1, Sigma: 8.10141
+Peak 21 -> Mean: 19621.2, Sigma: 7.93947
+Peak 22 -> Mean: 20594.4, Sigma: 8.15461
+Peak 23 -> Mean: 21578.8, Sigma: 8.46008
+Peak 24 -> Mean: 22569.7, Sigma: 8.27635
+Peak 25 -> Mean: 23565.9, Sigma: 8.82515
+Peak 26 -> Mean: 24566.7, Sigma: 8.83585
+Peak 27 -> Mean: 25568.8, Sigma: 8.70147
+Peak 28 -> Mean: 26574.7, Sigma: 9.17967
+Peak 29 -> Mean: 27581.3, Sigma: 8.90065
+Peak 30 -> Mean: 28589.3, Sigma: 8.45532
+Peak 31 -> Mean: 29600.4, Sigma: 8.86472
+Peak 32 -> Mean: 30611.9, Sigma: 8.94707
+Valoarea lui N este 32
+
+========== REZULTATE FIT & STATISTICA ==========
+Parametru p0 (Offset): -196.176
+Parametru p1 (Panta) : 9.51752
+Media y (y_mean)     : 15520.5
+SS_res               : 642336
+SS_tot               : 2.47748e+09
+R^2 (Determinare)    : 0.999741
+================================================
+Successfully processed 1 channels.
 Process timestamp from reader

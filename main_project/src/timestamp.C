@@ -48,7 +48,7 @@ void timestamp::Initialize_Hist()
         h_freq[j]->SetDirectory(nullptr);
 
         TString name2 = Form("h_ch_dif_ch%d", j);
-        TString title2 = Form("Channel %d  difference (ch_0 reff);#Delta t_{0} - #Delta t [Ticks];Counts", j);
+        TString title2 = Form("Channel %d  difference (ch_0 reff);t_{0} -  t[clks];Counts", j);
         h_ch_dif[j] = new TH1F(name2, title2, 100, -10, 100);
         h_ch_dif[j]->SetDirectory(nullptr);
     }
@@ -63,8 +63,8 @@ void timestamp::ProcessTree(tr *eventReader)
     std::vector<double> results(fTotalChannels, 0.0);
     results.clear();
     std::vector<int> counter(fTotalChannels, 0.0);
-    int entriesss = 1000;
-    for (int i = 0; i < eventReader->fChain->GetEntries() && i < entriesss; i++)
+    // int entriesss = 1000;
+    for (int i = 0; i < eventReader->fChain->GetEntries(); i++)
     {
         eventReader->fChain->GetEntry(i);
         Int_t current_channel = eventReader->channel;
