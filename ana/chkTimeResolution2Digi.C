@@ -38,11 +38,11 @@ void chkTimeResolution2Digi()
   UShort_t energy;
   ULong64_t userInfo0;
 
-  tree->SetBranchAddress("Module", &module);
-  tree->SetBranchAddress("Channel", &channel);
-  tree->SetBranchAddress("TimestampNs", &timestampNs);
-  tree->SetBranchAddress("Energy", &energy);
-  tree->SetBranchAddress("UserInfo0", &userInfo0);
+  tree->SetBranchAddress("module", &module);
+  tree->SetBranchAddress("channel", &channel);
+  tree->SetBranchAddress("timestamp_ns", &timestampNs);
+  tree->SetBranchAddress("energy", &energy);
+  tree->SetBranchAddress("user_info0", &userInfo0);
 
   ULong64_t nEntries = tree->GetEntries();
   std::cout << "Total Events: " << nEntries << std::endl;
@@ -83,7 +83,6 @@ void chkTimeResolution2Digi()
     if (module == 0)
     {
       eventMod0.push_back(event_tmp);
-      
     }
     else if (module == 1)
     {

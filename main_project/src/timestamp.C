@@ -80,7 +80,7 @@ void timestamp::ProcessTree(tr *eventReader)
                 {
 
                     reference = current_ts;
-                    // std::cout << "Refereinta e " << reference << " Canal " << j << std::endl;
+                    std::cout << "Refereinta e " << reference << " Canal " << j << std::endl;
                 }
 
                 if (reference > 0)
