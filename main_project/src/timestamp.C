@@ -57,68 +57,146 @@ void timestamp::Initialize_Hist()
 void timestamp::ProcessTree(tr *eventReader)
 {
     std::cout << "Process timestamp from reader" << std::endl;
+    // Safety check 1: null pointer or empty chain
+    if (!eventReader || !eventReader->fChain)
+    {
+        std::cerr << "[Error] Null pointer provided for eventReader or chain!\n";
+        return;
+    }
+
+    Long64_t nEntries = eventReader->fChain->GetEntries();
+    if (nEntries <= 0 || fTotalChannels <= 0)
+    {
+        std::cerr << "[Warning] No entries or invalid channel count.\n";
+        return;
+    }
     Long64_t reference = -1;
     std::vector<Long64_t> prev_timestamp(fTotalChannels);
-    std::vector<double> sums(fTotalChannels, 0.0);
+    const Long64_t WINDOW = 100; // ns
+    std::vector<std::vector<double>> sums(2, std::vector<double>(fTotalChannels, 0.0));
     std::vector<double> results(fTotalChannels, 0.0);
     results.clear();
-    std::vector<int> counter(fTotalChannels, 0.0);
-    // int entriesss = 1000;
-    for (int i = 0; i < eventReader->fChain->GetEntries(); i++)
+
+    std::vector<std::vector<double>> mean(2, std::vector<double>(fTotalChannels, 0.0));
+    std::vector<std::vector<int>> counter(2, std::vector<int>(fTotalChannels, 0)); // int entriesss = 1000;
+    std::vector<Long64_t> ref_timestamps;
+
+    for (Long64_t i = 0; i < eventReader->fChain->GetEntries() && i < 500; ++i)
+    {
+        eventReader->fChain->GetEntry(i);
+        if (eventReader->module == 0 && eventReader->channel == 0)
+        {
+            ref_timestamps.push_back(eventReader->timestamp);
+            // std::cout << eventReader->timestamp << std::endl;
+        }
+    }
+    for (int i = 0; i < eventReader->fChain->GetEntries() && i < 500; i++)
     {
         eventReader->fChain->GetEntry(i);
         Int_t current_channel = eventReader->channel;
         Long64_t current_ts = eventReader->timestamp;
+        Int_t current_module = eventReader->module;
 
-        for (int j = 0; j < fTotalChannels; j++)
-        { // channel 0 reference
+        Long64_t closest_ref = -1;
+        if (current_module < 0 || current_module >= static_cast<int>(sums.size()) ||
+            current_channel < 0 || current_channel >= static_cast<int>(sums[current_module].size()))
+        {
+            // Ignores channels that exceed your allocated buffer size
+            continue;
+        }
+        auto it = std::lower_bound(ref_timestamps.begin(), ref_timestamps.end(), current_ts - WINDOW);
+        if (it != ref_timestamps.end() && *it <= current_ts + WINDOW)
+        {
+            closest_ref = *it;
+        }
+        if (closest_ref == -1)
+        {
+            continue; // Moves straight to the next event/entry in the loop
+        }
 
-            if (i > 0 && current_channel == j)
-            {
+        double ch_difference = current_ts - closest_ref;
+        if (closest_ref != -1)
+        {
+            sums.at(current_module).at(current_channel) += ch_difference;
+            counter.at(current_module).at(current_channel)++;
 
-                if (j == 0)
-                {
+            std::cout << "[Hit Match] Entry: " << i
+                      << " | Mod: " << current_module
+                      << " | Ch: " << current_channel
+                      << " | TS: " << current_ts
+                      << " | Ref TS: " << closest_ref
+                      << " | Diff: " << ch_difference
+                      << " | Running Sum: " << sums.at(current_module).at(current_channel)
+                      << " | Running Count: " << counter.at(current_module).at(current_channel)
+                      << '\n';
+        }
+        else
+        {
+            // Optional: Print when a hit fails to find a coincidence reference
+            std::cout << "[No Match] Mod: " << current_module << " | Ch: " << current_channel << " | TS: " << current_ts << '\n';
+        }
+        // std::cout << "Entry: " << i
+        //           << " | Canal: " << current_channel
+        //           << " | Current TS: " << current_ts
+        //           << " | Current Module: " << current_module
+        //           << " | Ref TS (Ch0): " << closest_ref
+        //           << " | Diferenta fata de Ch0: " << ch_difference << std::endl;
+        // //  h_ch_dif[j]->Fill(ch_difference);
 
-                    reference = current_ts;
-                    std::cout << "Refereinta e " << reference << " Canal " << j << std::endl;
-                }
+        Long64_t delta_prev = current_ts - prev_timestamp[current_channel];
 
-                if (reference > 0)
-                {
-                    double ch_difference = current_ts - reference;
-                    sums[j] += ch_difference;
-                    counter[j]++;
-                    // std::cout << "Entry: " << i
-                    //           << " | Canal: " << current_channel
-                    //           << " | Current TS: " << current_ts
-                    //           << " | Ref TS (Ch0): " << reference
-                    //           << " | Diferenta fata de Ch0: " << ch_difference << std::endl;
-                    h_ch_dif[j]->Fill(ch_difference);
-                }
-                Long64_t delta_prev = current_ts - prev_timestamp[j];
+        // std::cout << "Entry: " << i
+        //           << " | Channel: " << current_channel
+        //           << " | Current TS: " << current_ts
+        //           << " | Prev TS: " << prev_timestamp[j]
+        //           << " | Frequency (Hz): " << freq << std::endl;
 
-                double freq = 1.0 / (delta_prev * 8e-9);
+        // h_freq[j]->Fill(freq);
 
-                // std::cout << "Entry: " << i
-                //           << " | Channel: " << current_channel
-                //           << " | Current TS: " << current_ts
-                //           << " | Prev TS: " << prev_timestamp[j]
-                //           << " | Frequency (Hz): " << freq << std::endl;
+        prev_timestamp[current_channel] = current_ts;
 
-                h_freq[j]->Fill(freq);
-
-                prev_timestamp[j] = current_ts;
-            }
+        //   mean[current_module][current_channel] = sums[current_module][current_channel] / counter[current_module][current_channel];
+    }
+    for (int mod = 0; mod < 2; mod++)
+    {
+        for (int i = 0; i < fTotalChannels; i++)
+        {
+            mean[mod][i] = sums[mod][i] / counter[mod][i];
+            std::cout << "[Module " << mod << ", Channel " << i << "] "
+                      << "Sum: " << sums[mod][i] << " / "
+                      << "Count: " << counter[1][i] << " = "
+                      << "Mean: " << mean[mod][i] << '\n';
         }
     }
-    for (int i = 0; i < fTotalChannels; i++)
-    {
-        double tmp = static_cast<double>(sums[i]) / counter[i];
+    TCanvas *c1 = new TCanvas("c_means", "Mean vs Channel", 1200, 500);
+    c1->Divide(2, 1);
 
-        results.push_back(tmp);
-        fGraph->SetPoint(fGraph->GetN(), i, tmp);
-        // std::cout << sums[i] << " / " << counter[i] << " = " << tmp << "\n";
+    Color_t colors[2] = {kAzure + 2, kOrange + 7};
+
+    for (int mod = 0; mod < 2; mod++)
+    {
+        c1->cd(mod + 1);
+        gPad->SetGrid();
+
+        TGraph *gr = new TGraph(fTotalChannels);
+        gr->SetName(Form("gr_mean_mod%d", mod));
+        gr->SetTitle(Form("Module %d Mean vs Channel;Channel ID;Mean Value", mod));
+
+        for (int i = 0; i < fTotalChannels; i++)
+        {
+            gr->SetPoint(i, i, mean[mod][i]);
+        }
+
+        gr->SetMarkerStyle(20);
+        gr->SetMarkerSize(0.9);
+        gr->SetMarkerColor(colors[mod]);
+        gr->SetLineColor(colors[mod]);
+        gr->SetLineWidth(2);
+
+        gr->Draw("APL");
     }
+
+    c1->Update();
 }
 
 void timestamp::DrawHistograms()

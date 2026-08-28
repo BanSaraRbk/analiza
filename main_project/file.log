@@ -1,87 +1,269 @@
-Using file: data/20260814_test_multiple_peaks_4sigma.root
-Error in <TTree::SetBranchAddress>: unknown branch -> module
-ReadStreamerInfo, class:vector<int32_t>, illegal uid=-2
+Using file: data/run20064.root
+Error in <TTree::SetBranchAddress>: unknown branch -> waveform
 Cate canale doriti??
-Reading reference spectrum from: output_SIGMA.csv
-Loaded 3276 samples into reference spectrum histogram.
-Finding peaks in spectrum: hRefSpectrum
-Found 32 peaks.
-Peak 1 -> Mean: 100.5, Sigma: 4
-Peak 2 -> Mean: 200.5, Sigma: 4
-Peak 3 -> Mean: 300.5, Sigma: 4
-Peak 4 -> Mean: 400.5, Sigma: 4
-Peak 5 -> Mean: 500.5, Sigma: 4
-Peak 6 -> Mean: 600.5, Sigma: 4
-Peak 7 -> Mean: 700.5, Sigma: 4
-Peak 8 -> Mean: 800.5, Sigma: 4
-Peak 9 -> Mean: 900.5, Sigma: 4
-Peak 10 -> Mean: 1000.5, Sigma: 4
-Peak 11 -> Mean: 1100.5, Sigma: 4
-Peak 12 -> Mean: 1200.5, Sigma: 4
-Peak 13 -> Mean: 1300.5, Sigma: 4
-Peak 14 -> Mean: 1400.5, Sigma: 4
-Peak 15 -> Mean: 1500.5, Sigma: 4
-Peak 16 -> Mean: 1600.5, Sigma: 4
-Peak 17 -> Mean: 1700.5, Sigma: 4
-Peak 18 -> Mean: 1800.5, Sigma: 4
-Peak 19 -> Mean: 1900.5, Sigma: 4
-Peak 20 -> Mean: 2000.5, Sigma: 4
-Peak 21 -> Mean: 2100.5, Sigma: 4
-Peak 22 -> Mean: 2200.5, Sigma: 4
-Peak 23 -> Mean: 2300.5, Sigma: 4
-Peak 24 -> Mean: 2400.5, Sigma: 4
-Peak 25 -> Mean: 2500.5, Sigma: 4
-Peak 26 -> Mean: 2600.5, Sigma: 4
-Peak 27 -> Mean: 2700.5, Sigma: 4
-Peak 28 -> Mean: 2800.5, Sigma: 4
-Peak 29 -> Mean: 2900.5, Sigma: 4
-Peak 30 -> Mean: 3000.5, Sigma: 4
-Peak 31 -> Mean: 3100.5, Sigma: 4
-Peak 32 -> Mean: 3200.5, Sigma: 4
-Processing data from event reader...
-Finding peaks in spectrum: h_spectrum_ch0
-Found 32 peaks.
-Peak 1 -> Mean: 928.906, Sigma: 8.10564
-Peak 2 -> Mean: 1861.2, Sigma: 8.51966
-Peak 3 -> Mean: 2792.79, Sigma: 7.70862
-Peak 4 -> Mean: 3724.15, Sigma: 7.72109
-Peak 5 -> Mean: 4655.94, Sigma: 7.83119
-Peak 6 -> Mean: 5587.18, Sigma: 6.9833
-Peak 7 -> Mean: 6518.87, Sigma: 7.95109
-Peak 8 -> Mean: 7451.13, Sigma: 7.27117
-Peak 9 -> Mean: 8382.69, Sigma: 8.16896
-Peak 10 -> Mean: 9313.69, Sigma: 7.4524
-Peak 11 -> Mean: 10245.3, Sigma: 7.51419
-Peak 12 -> Mean: 11175.4, Sigma: 8.13272
-Peak 13 -> Mean: 12108.4, Sigma: 6.97574
-Peak 14 -> Mean: 13039.5, Sigma: 7.86209
-Peak 15 -> Mean: 13971.5, Sigma: 7.7737
-Peak 16 -> Mean: 14903.2, Sigma: 7.92303
-Peak 17 -> Mean: 15835, Sigma: 7.86416
-Peak 18 -> Mean: 16769.7, Sigma: 7.16238
-Peak 19 -> Mean: 17709, Sigma: 7.83414
-Peak 20 -> Mean: 18659.1, Sigma: 8.10141
-Peak 21 -> Mean: 19621.2, Sigma: 7.93947
-Peak 22 -> Mean: 20594.4, Sigma: 8.15461
-Peak 23 -> Mean: 21578.8, Sigma: 8.46008
-Peak 24 -> Mean: 22569.7, Sigma: 8.27635
-Peak 25 -> Mean: 23565.9, Sigma: 8.82515
-Peak 26 -> Mean: 24566.7, Sigma: 8.83585
-Peak 27 -> Mean: 25568.8, Sigma: 8.70147
-Peak 28 -> Mean: 26574.7, Sigma: 9.17967
-Peak 29 -> Mean: 27581.3, Sigma: 8.90065
-Peak 30 -> Mean: 28589.3, Sigma: 8.45532
-Peak 31 -> Mean: 29600.4, Sigma: 8.86472
-Peak 32 -> Mean: 30611.9, Sigma: 8.94707
-Valoarea lui N este 32
-
-========== REZULTATE FIT & STATISTICA ==========
-Parametru p0 (Offset): -196.176
-Parametru p1 (Panta) : 9.51752
-Media y (y_mean)     : 15520.5
-SS_res               : 642336
-SS_tot               : 2.47748e+09
-R^2 (Determinare)    : 0.999741
-================================================
-Successfully processed 1 channels.
 Process timestamp from reader
+[Hit Match] Entry: 0 | Mod: 1 | Ch: 6 | TS: 402472 | Ref TS: 402520 | Diff: -48 | Running Sum: -48 | Running Count: 1
+[Hit Match] Entry: 1 | Mod: 1 | Ch: 7 | TS: 402472 | Ref TS: 402520 | Diff: -48 | Running Sum: -48 | Running Count: 1
+[Hit Match] Entry: 2 | Mod: 1 | Ch: 8 | TS: 402472 | Ref TS: 402520 | Diff: -48 | Running Sum: -48 | Running Count: 1
+[Hit Match] Entry: 5 | Mod: 1 | Ch: 0 | TS: 402480 | Ref TS: 402520 | Diff: -40 | Running Sum: -40 | Running Count: 1
+[Hit Match] Entry: 6 | Mod: 1 | Ch: 1 | TS: 402480 | Ref TS: 402520 | Diff: -40 | Running Sum: -40 | Running Count: 1
+[Hit Match] Entry: 7 | Mod: 1 | Ch: 2 | TS: 402480 | Ref TS: 402520 | Diff: -40 | Running Sum: -40 | Running Count: 1
+[Hit Match] Entry: 8 | Mod: 1 | Ch: 3 | TS: 402480 | Ref TS: 402520 | Diff: -40 | Running Sum: -40 | Running Count: 1
+[Hit Match] Entry: 9 | Mod: 1 | Ch: 4 | TS: 402480 | Ref TS: 402520 | Diff: -40 | Running Sum: -40 | Running Count: 1
+[Hit Match] Entry: 10 | Mod: 1 | Ch: 5 | TS: 402480 | Ref TS: 402520 | Diff: -40 | Running Sum: -40 | Running Count: 1
+[Hit Match] Entry: 11 | Mod: 1 | Ch: 9 | TS: 402480 | Ref TS: 402520 | Diff: -40 | Running Sum: -40 | Running Count: 1
+[Hit Match] Entry: 12 | Mod: 1 | Ch: 10 | TS: 402480 | Ref TS: 402520 | Diff: -40 | Running Sum: -40 | Running Count: 1
+[Hit Match] Entry: 13 | Mod: 1 | Ch: 11 | TS: 402480 | Ref TS: 402520 | Diff: -40 | Running Sum: -40 | Running Count: 1
+[Hit Match] Entry: 15 | Mod: 1 | Ch: 3 | TS: 1402496 | Ref TS: 1402544 | Diff: -48 | Running Sum: -88 | Running Count: 2
+[Hit Match] Entry: 16 | Mod: 1 | Ch: 4 | TS: 1402496 | Ref TS: 1402544 | Diff: -48 | Running Sum: -88 | Running Count: 2
+[Hit Match] Entry: 17 | Mod: 1 | Ch: 5 | TS: 1402496 | Ref TS: 1402544 | Diff: -48 | Running Sum: -88 | Running Count: 2
+[Hit Match] Entry: 18 | Mod: 1 | Ch: 6 | TS: 1402496 | Ref TS: 1402544 | Diff: -48 | Running Sum: -96 | Running Count: 2
+[Hit Match] Entry: 19 | Mod: 1 | Ch: 7 | TS: 1402496 | Ref TS: 1402544 | Diff: -48 | Running Sum: -96 | Running Count: 2
+[Hit Match] Entry: 20 | Mod: 1 | Ch: 8 | TS: 1402496 | Ref TS: 1402544 | Diff: -48 | Running Sum: -96 | Running Count: 2
+[Hit Match] Entry: 21 | Mod: 1 | Ch: 10 | TS: 1402496 | Ref TS: 1402544 | Diff: -48 | Running Sum: -88 | Running Count: 2
+[Hit Match] Entry: 22 | Mod: 1 | Ch: 11 | TS: 1402496 | Ref TS: 1402544 | Diff: -48 | Running Sum: -88 | Running Count: 2
+[Hit Match] Entry: 26 | Mod: 1 | Ch: 0 | TS: 1402504 | Ref TS: 1402544 | Diff: -40 | Running Sum: -80 | Running Count: 2
+[Hit Match] Entry: 27 | Mod: 1 | Ch: 1 | TS: 1402504 | Ref TS: 1402544 | Diff: -40 | Running Sum: -80 | Running Count: 2
+[Hit Match] Entry: 28 | Mod: 1 | Ch: 2 | TS: 1402504 | Ref TS: 1402544 | Diff: -40 | Running Sum: -80 | Running Count: 2
+[Hit Match] Entry: 29 | Mod: 1 | Ch: 9 | TS: 1402504 | Ref TS: 1402544 | Diff: -40 | Running Sum: -80 | Running Count: 2
+[Hit Match] Entry: 30 | Mod: 1 | Ch: 1 | TS: 2402520 | Ref TS: 2402560 | Diff: -40 | Running Sum: -120 | Running Count: 3
+[Hit Match] Entry: 31 | Mod: 1 | Ch: 2 | TS: 2402520 | Ref TS: 2402560 | Diff: -40 | Running Sum: -120 | Running Count: 3
+[Hit Match] Entry: 32 | Mod: 1 | Ch: 3 | TS: 2402520 | Ref TS: 2402560 | Diff: -40 | Running Sum: -128 | Running Count: 3
+[Hit Match] Entry: 33 | Mod: 1 | Ch: 4 | TS: 2402520 | Ref TS: 2402560 | Diff: -40 | Running Sum: -128 | Running Count: 3
+[Hit Match] Entry: 34 | Mod: 1 | Ch: 5 | TS: 2402520 | Ref TS: 2402560 | Diff: -40 | Running Sum: -128 | Running Count: 3
+[Hit Match] Entry: 35 | Mod: 1 | Ch: 6 | TS: 2402520 | Ref TS: 2402560 | Diff: -40 | Running Sum: -136 | Running Count: 3
+[Hit Match] Entry: 36 | Mod: 1 | Ch: 7 | TS: 2402520 | Ref TS: 2402560 | Diff: -40 | Running Sum: -136 | Running Count: 3
+[Hit Match] Entry: 37 | Mod: 1 | Ch: 8 | TS: 2402520 | Ref TS: 2402560 | Diff: -40 | Running Sum: -136 | Running Count: 3
+[Hit Match] Entry: 38 | Mod: 1 | Ch: 9 | TS: 2402520 | Ref TS: 2402560 | Diff: -40 | Running Sum: -120 | Running Count: 3
+[Hit Match] Entry: 39 | Mod: 1 | Ch: 10 | TS: 2402520 | Ref TS: 2402560 | Diff: -40 | Running Sum: -128 | Running Count: 3
+[Hit Match] Entry: 40 | Mod: 1 | Ch: 11 | TS: 2402520 | Ref TS: 2402560 | Diff: -40 | Running Sum: -128 | Running Count: 3
+[Hit Match] Entry: 44 | Mod: 1 | Ch: 0 | TS: 2402528 | Ref TS: 2402560 | Diff: -32 | Running Sum: -112 | Running Count: 3
+[Hit Match] Entry: 45 | Mod: 1 | Ch: 1 | TS: 3402544 | Ref TS: 3402584 | Diff: -40 | Running Sum: -160 | Running Count: 4
+[Hit Match] Entry: 46 | Mod: 1 | Ch: 2 | TS: 3402544 | Ref TS: 3402584 | Diff: -40 | Running Sum: -160 | Running Count: 4
+[Hit Match] Entry: 47 | Mod: 1 | Ch: 3 | TS: 3402544 | Ref TS: 3402584 | Diff: -40 | Running Sum: -168 | Running Count: 4
+[Hit Match] Entry: 48 | Mod: 1 | Ch: 4 | TS: 3402544 | Ref TS: 3402584 | Diff: -40 | Running Sum: -168 | Running Count: 4
+[Hit Match] Entry: 49 | Mod: 1 | Ch: 5 | TS: 3402544 | Ref TS: 3402584 | Diff: -40 | Running Sum: -168 | Running Count: 4
+[Hit Match] Entry: 50 | Mod: 1 | Ch: 6 | TS: 3402544 | Ref TS: 3402584 | Diff: -40 | Running Sum: -176 | Running Count: 4
+[Hit Match] Entry: 51 | Mod: 1 | Ch: 7 | TS: 3402544 | Ref TS: 3402584 | Diff: -40 | Running Sum: -176 | Running Count: 4
+[Hit Match] Entry: 52 | Mod: 1 | Ch: 8 | TS: 3402544 | Ref TS: 3402584 | Diff: -40 | Running Sum: -176 | Running Count: 4
+[Hit Match] Entry: 53 | Mod: 1 | Ch: 9 | TS: 3402544 | Ref TS: 3402584 | Diff: -40 | Running Sum: -160 | Running Count: 4
+[Hit Match] Entry: 54 | Mod: 1 | Ch: 10 | TS: 3402544 | Ref TS: 3402584 | Diff: -40 | Running Sum: -168 | Running Count: 4
+[Hit Match] Entry: 55 | Mod: 1 | Ch: 11 | TS: 3402544 | Ref TS: 3402584 | Diff: -40 | Running Sum: -168 | Running Count: 4
+[Hit Match] Entry: 59 | Mod: 1 | Ch: 0 | TS: 3402552 | Ref TS: 3402584 | Diff: -32 | Running Sum: -144 | Running Count: 4
+[Hit Match] Entry: 60 | Mod: 1 | Ch: 1 | TS: 4402568 | Ref TS: 4402608 | Diff: -40 | Running Sum: -200 | Running Count: 5
+[Hit Match] Entry: 61 | Mod: 1 | Ch: 2 | TS: 4402568 | Ref TS: 4402608 | Diff: -40 | Running Sum: -200 | Running Count: 5
+[Hit Match] Entry: 62 | Mod: 1 | Ch: 3 | TS: 4402568 | Ref TS: 4402608 | Diff: -40 | Running Sum: -208 | Running Count: 5
+[Hit Match] Entry: 63 | Mod: 1 | Ch: 4 | TS: 4402568 | Ref TS: 4402608 | Diff: -40 | Running Sum: -208 | Running Count: 5
+[Hit Match] Entry: 64 | Mod: 1 | Ch: 5 | TS: 4402568 | Ref TS: 4402608 | Diff: -40 | Running Sum: -208 | Running Count: 5
+[Hit Match] Entry: 65 | Mod: 1 | Ch: 6 | TS: 4402568 | Ref TS: 4402608 | Diff: -40 | Running Sum: -216 | Running Count: 5
+[Hit Match] Entry: 66 | Mod: 1 | Ch: 7 | TS: 4402568 | Ref TS: 4402608 | Diff: -40 | Running Sum: -216 | Running Count: 5
+[Hit Match] Entry: 67 | Mod: 1 | Ch: 8 | TS: 4402568 | Ref TS: 4402608 | Diff: -40 | Running Sum: -216 | Running Count: 5
+[Hit Match] Entry: 68 | Mod: 1 | Ch: 9 | TS: 4402568 | Ref TS: 4402608 | Diff: -40 | Running Sum: -200 | Running Count: 5
+[Hit Match] Entry: 69 | Mod: 1 | Ch: 10 | TS: 4402568 | Ref TS: 4402608 | Diff: -40 | Running Sum: -208 | Running Count: 5
+[Hit Match] Entry: 70 | Mod: 1 | Ch: 11 | TS: 4402568 | Ref TS: 4402608 | Diff: -40 | Running Sum: -208 | Running Count: 5
+[Hit Match] Entry: 74 | Mod: 1 | Ch: 0 | TS: 4402576 | Ref TS: 4402608 | Diff: -32 | Running Sum: -176 | Running Count: 5
+[Hit Match] Entry: 75 | Mod: 1 | Ch: 1 | TS: 5402592 | Ref TS: 5402632 | Diff: -40 | Running Sum: -240 | Running Count: 6
+[Hit Match] Entry: 76 | Mod: 1 | Ch: 2 | TS: 5402592 | Ref TS: 5402632 | Diff: -40 | Running Sum: -240 | Running Count: 6
+[Hit Match] Entry: 77 | Mod: 1 | Ch: 3 | TS: 5402592 | Ref TS: 5402632 | Diff: -40 | Running Sum: -248 | Running Count: 6
+[Hit Match] Entry: 78 | Mod: 1 | Ch: 4 | TS: 5402592 | Ref TS: 5402632 | Diff: -40 | Running Sum: -248 | Running Count: 6
+[Hit Match] Entry: 79 | Mod: 1 | Ch: 5 | TS: 5402592 | Ref TS: 5402632 | Diff: -40 | Running Sum: -248 | Running Count: 6
+[Hit Match] Entry: 80 | Mod: 1 | Ch: 6 | TS: 5402592 | Ref TS: 5402632 | Diff: -40 | Running Sum: -256 | Running Count: 6
+[Hit Match] Entry: 81 | Mod: 1 | Ch: 7 | TS: 5402592 | Ref TS: 5402632 | Diff: -40 | Running Sum: -256 | Running Count: 6
+[Hit Match] Entry: 82 | Mod: 1 | Ch: 8 | TS: 5402592 | Ref TS: 5402632 | Diff: -40 | Running Sum: -256 | Running Count: 6
+[Hit Match] Entry: 83 | Mod: 1 | Ch: 9 | TS: 5402592 | Ref TS: 5402632 | Diff: -40 | Running Sum: -240 | Running Count: 6
+[Hit Match] Entry: 84 | Mod: 1 | Ch: 10 | TS: 5402592 | Ref TS: 5402632 | Diff: -40 | Running Sum: -248 | Running Count: 6
+[Hit Match] Entry: 85 | Mod: 0 | Ch: 0 | TS: 402520 | Ref TS: 402520 | Diff: 0 | Running Sum: 0 | Running Count: 1
+[Hit Match] Entry: 86 | Mod: 0 | Ch: 1 | TS: 402520 | Ref TS: 402520 | Diff: 0 | Running Sum: 0 | Running Count: 1
+[Hit Match] Entry: 87 | Mod: 0 | Ch: 2 | TS: 402520 | Ref TS: 402520 | Diff: 0 | Running Sum: 0 | Running Count: 1
+[Hit Match] Entry: 88 | Mod: 0 | Ch: 3 | TS: 402520 | Ref TS: 402520 | Diff: 0 | Running Sum: 0 | Running Count: 1
+[Hit Match] Entry: 89 | Mod: 0 | Ch: 4 | TS: 402520 | Ref TS: 402520 | Diff: 0 | Running Sum: 0 | Running Count: 1
+[Hit Match] Entry: 90 | Mod: 0 | Ch: 5 | TS: 402520 | Ref TS: 402520 | Diff: 0 | Running Sum: 0 | Running Count: 1
+[Hit Match] Entry: 91 | Mod: 0 | Ch: 6 | TS: 402520 | Ref TS: 402520 | Diff: 0 | Running Sum: 0 | Running Count: 1
+[Hit Match] Entry: 92 | Mod: 0 | Ch: 7 | TS: 402520 | Ref TS: 402520 | Diff: 0 | Running Sum: 0 | Running Count: 1
+[Hit Match] Entry: 93 | Mod: 0 | Ch: 8 | TS: 402520 | Ref TS: 402520 | Diff: 0 | Running Sum: 0 | Running Count: 1
+[Hit Match] Entry: 94 | Mod: 0 | Ch: 9 | TS: 402520 | Ref TS: 402520 | Diff: 0 | Running Sum: 0 | Running Count: 1
+[Hit Match] Entry: 95 | Mod: 0 | Ch: 10 | TS: 402520 | Ref TS: 402520 | Diff: 0 | Running Sum: 0 | Running Count: 1
+[Hit Match] Entry: 96 | Mod: 0 | Ch: 11 | TS: 402520 | Ref TS: 402520 | Diff: 0 | Running Sum: 0 | Running Count: 1
+[Hit Match] Entry: 100 | Mod: 0 | Ch: 0 | TS: 1402544 | Ref TS: 1402544 | Diff: 0 | Running Sum: 0 | Running Count: 2
+[Hit Match] Entry: 101 | Mod: 0 | Ch: 1 | TS: 1402544 | Ref TS: 1402544 | Diff: 0 | Running Sum: 0 | Running Count: 2
+[Hit Match] Entry: 102 | Mod: 0 | Ch: 2 | TS: 1402544 | Ref TS: 1402544 | Diff: 0 | Running Sum: 0 | Running Count: 2
+[Hit Match] Entry: 103 | Mod: 0 | Ch: 3 | TS: 1402544 | Ref TS: 1402544 | Diff: 0 | Running Sum: 0 | Running Count: 2
+[Hit Match] Entry: 104 | Mod: 0 | Ch: 4 | TS: 1402544 | Ref TS: 1402544 | Diff: 0 | Running Sum: 0 | Running Count: 2
+[Hit Match] Entry: 105 | Mod: 0 | Ch: 5 | TS: 1402544 | Ref TS: 1402544 | Diff: 0 | Running Sum: 0 | Running Count: 2
+[Hit Match] Entry: 106 | Mod: 0 | Ch: 6 | TS: 1402544 | Ref TS: 1402544 | Diff: 0 | Running Sum: 0 | Running Count: 2
+[Hit Match] Entry: 107 | Mod: 0 | Ch: 7 | TS: 1402544 | Ref TS: 1402544 | Diff: 0 | Running Sum: 0 | Running Count: 2
+[Hit Match] Entry: 108 | Mod: 0 | Ch: 8 | TS: 1402544 | Ref TS: 1402544 | Diff: 0 | Running Sum: 0 | Running Count: 2
+[Hit Match] Entry: 109 | Mod: 0 | Ch: 9 | TS: 1402544 | Ref TS: 1402544 | Diff: 0 | Running Sum: 0 | Running Count: 2
+[Hit Match] Entry: 110 | Mod: 0 | Ch: 10 | TS: 1402544 | Ref TS: 1402544 | Diff: 0 | Running Sum: 0 | Running Count: 2
+[Hit Match] Entry: 111 | Mod: 0 | Ch: 11 | TS: 1402544 | Ref TS: 1402544 | Diff: 0 | Running Sum: 0 | Running Count: 2
+[Hit Match] Entry: 115 | Mod: 0 | Ch: 0 | TS: 2402560 | Ref TS: 2402560 | Diff: 0 | Running Sum: 0 | Running Count: 3
+[Hit Match] Entry: 116 | Mod: 0 | Ch: 1 | TS: 2402568 | Ref TS: 2402560 | Diff: 8 | Running Sum: 8 | Running Count: 3
+[Hit Match] Entry: 117 | Mod: 0 | Ch: 2 | TS: 2402568 | Ref TS: 2402560 | Diff: 8 | Running Sum: 8 | Running Count: 3
+[Hit Match] Entry: 118 | Mod: 0 | Ch: 3 | TS: 2402568 | Ref TS: 2402560 | Diff: 8 | Running Sum: 8 | Running Count: 3
+[Hit Match] Entry: 119 | Mod: 0 | Ch: 4 | TS: 2402568 | Ref TS: 2402560 | Diff: 8 | Running Sum: 8 | Running Count: 3
+[Hit Match] Entry: 120 | Mod: 0 | Ch: 5 | TS: 2402568 | Ref TS: 2402560 | Diff: 8 | Running Sum: 8 | Running Count: 3
+[Hit Match] Entry: 121 | Mod: 0 | Ch: 6 | TS: 2402568 | Ref TS: 2402560 | Diff: 8 | Running Sum: 8 | Running Count: 3
+[Hit Match] Entry: 122 | Mod: 0 | Ch: 7 | TS: 2402568 | Ref TS: 2402560 | Diff: 8 | Running Sum: 8 | Running Count: 3
+[Hit Match] Entry: 123 | Mod: 0 | Ch: 8 | TS: 2402568 | Ref TS: 2402560 | Diff: 8 | Running Sum: 8 | Running Count: 3
+[Hit Match] Entry: 124 | Mod: 0 | Ch: 9 | TS: 2402568 | Ref TS: 2402560 | Diff: 8 | Running Sum: 8 | Running Count: 3
+[Hit Match] Entry: 125 | Mod: 0 | Ch: 10 | TS: 2402568 | Ref TS: 2402560 | Diff: 8 | Running Sum: 8 | Running Count: 3
+[Hit Match] Entry: 126 | Mod: 0 | Ch: 11 | TS: 2402568 | Ref TS: 2402560 | Diff: 8 | Running Sum: 8 | Running Count: 3
+[Hit Match] Entry: 130 | Mod: 0 | Ch: 0 | TS: 3402584 | Ref TS: 3402584 | Diff: 0 | Running Sum: 0 | Running Count: 4
+[Hit Match] Entry: 131 | Mod: 0 | Ch: 1 | TS: 3402592 | Ref TS: 3402584 | Diff: 8 | Running Sum: 16 | Running Count: 4
+[Hit Match] Entry: 132 | Mod: 0 | Ch: 2 | TS: 3402592 | Ref TS: 3402584 | Diff: 8 | Running Sum: 16 | Running Count: 4
+[Hit Match] Entry: 133 | Mod: 0 | Ch: 3 | TS: 3402592 | Ref TS: 3402584 | Diff: 8 | Running Sum: 16 | Running Count: 4
+[Hit Match] Entry: 134 | Mod: 0 | Ch: 4 | TS: 3402592 | Ref TS: 3402584 | Diff: 8 | Running Sum: 16 | Running Count: 4
+[Hit Match] Entry: 135 | Mod: 0 | Ch: 5 | TS: 3402592 | Ref TS: 3402584 | Diff: 8 | Running Sum: 16 | Running Count: 4
+[Hit Match] Entry: 136 | Mod: 0 | Ch: 6 | TS: 3402592 | Ref TS: 3402584 | Diff: 8 | Running Sum: 16 | Running Count: 4
+[Hit Match] Entry: 137 | Mod: 0 | Ch: 7 | TS: 3402592 | Ref TS: 3402584 | Diff: 8 | Running Sum: 16 | Running Count: 4
+[Hit Match] Entry: 138 | Mod: 0 | Ch: 8 | TS: 3402592 | Ref TS: 3402584 | Diff: 8 | Running Sum: 16 | Running Count: 4
+[Hit Match] Entry: 139 | Mod: 0 | Ch: 9 | TS: 3402592 | Ref TS: 3402584 | Diff: 8 | Running Sum: 16 | Running Count: 4
+[Hit Match] Entry: 140 | Mod: 0 | Ch: 10 | TS: 3402592 | Ref TS: 3402584 | Diff: 8 | Running Sum: 16 | Running Count: 4
+[Hit Match] Entry: 141 | Mod: 0 | Ch: 11 | TS: 3402592 | Ref TS: 3402584 | Diff: 8 | Running Sum: 16 | Running Count: 4
+[Hit Match] Entry: 145 | Mod: 0 | Ch: 0 | TS: 4402608 | Ref TS: 4402608 | Diff: 0 | Running Sum: 0 | Running Count: 5
+[Hit Match] Entry: 146 | Mod: 0 | Ch: 1 | TS: 4402608 | Ref TS: 4402608 | Diff: 0 | Running Sum: 16 | Running Count: 5
+[Hit Match] Entry: 147 | Mod: 0 | Ch: 7 | TS: 4402608 | Ref TS: 4402608 | Diff: 0 | Running Sum: 16 | Running Count: 5
+[Hit Match] Entry: 149 | Mod: 0 | Ch: 2 | TS: 4402616 | Ref TS: 4402608 | Diff: 8 | Running Sum: 24 | Running Count: 5
+[Hit Match] Entry: 150 | Mod: 0 | Ch: 3 | TS: 4402616 | Ref TS: 4402608 | Diff: 8 | Running Sum: 24 | Running Count: 5
+[Hit Match] Entry: 151 | Mod: 0 | Ch: 4 | TS: 4402616 | Ref TS: 4402608 | Diff: 8 | Running Sum: 24 | Running Count: 5
+[Hit Match] Entry: 152 | Mod: 0 | Ch: 5 | TS: 4402616 | Ref TS: 4402608 | Diff: 8 | Running Sum: 24 | Running Count: 5
+[Hit Match] Entry: 153 | Mod: 0 | Ch: 6 | TS: 4402616 | Ref TS: 4402608 | Diff: 8 | Running Sum: 24 | Running Count: 5
+[Hit Match] Entry: 154 | Mod: 0 | Ch: 8 | TS: 4402616 | Ref TS: 4402608 | Diff: 8 | Running Sum: 24 | Running Count: 5
+[Hit Match] Entry: 155 | Mod: 0 | Ch: 9 | TS: 4402616 | Ref TS: 4402608 | Diff: 8 | Running Sum: 24 | Running Count: 5
+[Hit Match] Entry: 156 | Mod: 0 | Ch: 10 | TS: 4402616 | Ref TS: 4402608 | Diff: 8 | Running Sum: 24 | Running Count: 5
+[Hit Match] Entry: 157 | Mod: 0 | Ch: 11 | TS: 4402616 | Ref TS: 4402608 | Diff: 8 | Running Sum: 24 | Running Count: 5
+[Hit Match] Entry: 160 | Mod: 0 | Ch: 0 | TS: 5402632 | Ref TS: 5402632 | Diff: 0 | Running Sum: 0 | Running Count: 6
+[Hit Match] Entry: 161 | Mod: 0 | Ch: 1 | TS: 5402632 | Ref TS: 5402632 | Diff: 0 | Running Sum: 16 | Running Count: 6
+[Hit Match] Entry: 162 | Mod: 0 | Ch: 2 | TS: 5402632 | Ref TS: 5402632 | Diff: 0 | Running Sum: 24 | Running Count: 6
+[Hit Match] Entry: 163 | Mod: 0 | Ch: 4 | TS: 5402632 | Ref TS: 5402632 | Diff: 0 | Running Sum: 24 | Running Count: 6
+[Hit Match] Entry: 164 | Mod: 0 | Ch: 5 | TS: 5402632 | Ref TS: 5402632 | Diff: 0 | Running Sum: 24 | Running Count: 6
+[Hit Match] Entry: 165 | Mod: 0 | Ch: 6 | TS: 5402632 | Ref TS: 5402632 | Diff: 0 | Running Sum: 24 | Running Count: 6
+[Hit Match] Entry: 166 | Mod: 0 | Ch: 7 | TS: 5402632 | Ref TS: 5402632 | Diff: 0 | Running Sum: 16 | Running Count: 6
+[Hit Match] Entry: 167 | Mod: 0 | Ch: 9 | TS: 5402632 | Ref TS: 5402632 | Diff: 0 | Running Sum: 24 | Running Count: 6
+[Hit Match] Entry: 168 | Mod: 0 | Ch: 11 | TS: 5402632 | Ref TS: 5402632 | Diff: 0 | Running Sum: 24 | Running Count: 6
+[Hit Match] Entry: 171 | Mod: 0 | Ch: 3 | TS: 5402640 | Ref TS: 5402632 | Diff: 8 | Running Sum: 32 | Running Count: 6
+[Hit Match] Entry: 172 | Mod: 0 | Ch: 8 | TS: 5402640 | Ref TS: 5402632 | Diff: 8 | Running Sum: 32 | Running Count: 6
+[Hit Match] Entry: 173 | Mod: 0 | Ch: 10 | TS: 5402640 | Ref TS: 5402632 | Diff: 8 | Running Sum: 32 | Running Count: 6
+[Hit Match] Entry: 175 | Mod: 0 | Ch: 0 | TS: 6402656 | Ref TS: 6402656 | Diff: 0 | Running Sum: 0 | Running Count: 7
+[Hit Match] Entry: 176 | Mod: 0 | Ch: 1 | TS: 6402656 | Ref TS: 6402656 | Diff: 0 | Running Sum: 16 | Running Count: 7
+[Hit Match] Entry: 177 | Mod: 0 | Ch: 2 | TS: 6402656 | Ref TS: 6402656 | Diff: 0 | Running Sum: 24 | Running Count: 7
+[Hit Match] Entry: 178 | Mod: 0 | Ch: 3 | TS: 6402656 | Ref TS: 6402656 | Diff: 0 | Running Sum: 32 | Running Count: 7
+[Hit Match] Entry: 179 | Mod: 0 | Ch: 4 | TS: 6402656 | Ref TS: 6402656 | Diff: 0 | Running Sum: 24 | Running Count: 7
+[Hit Match] Entry: 180 | Mod: 0 | Ch: 5 | TS: 6402656 | Ref TS: 6402656 | Diff: 0 | Running Sum: 24 | Running Count: 7
+[Hit Match] Entry: 181 | Mod: 0 | Ch: 6 | TS: 6402656 | Ref TS: 6402656 | Diff: 0 | Running Sum: 24 | Running Count: 7
+[Hit Match] Entry: 182 | Mod: 0 | Ch: 7 | TS: 6402656 | Ref TS: 6402656 | Diff: 0 | Running Sum: 16 | Running Count: 7
+[Hit Match] Entry: 183 | Mod: 0 | Ch: 8 | TS: 6402656 | Ref TS: 6402656 | Diff: 0 | Running Sum: 32 | Running Count: 7
+[Hit Match] Entry: 184 | Mod: 1 | Ch: 11 | TS: 5402592 | Ref TS: 5402632 | Diff: -40 | Running Sum: -248 | Running Count: 6
+[Hit Match] Entry: 188 | Mod: 1 | Ch: 0 | TS: 5402600 | Ref TS: 5402632 | Diff: -32 | Running Sum: -208 | Running Count: 6
+[Hit Match] Entry: 189 | Mod: 1 | Ch: 6 | TS: 6402608 | Ref TS: 6402656 | Diff: -48 | Running Sum: -304 | Running Count: 7
+[Hit Match] Entry: 190 | Mod: 1 | Ch: 7 | TS: 6402608 | Ref TS: 6402656 | Diff: -48 | Running Sum: -304 | Running Count: 7
+[Hit Match] Entry: 191 | Mod: 1 | Ch: 8 | TS: 6402608 | Ref TS: 6402656 | Diff: -48 | Running Sum: -304 | Running Count: 7
+[Hit Match] Entry: 194 | Mod: 1 | Ch: 0 | TS: 6402616 | Ref TS: 6402656 | Diff: -40 | Running Sum: -248 | Running Count: 7
+[Hit Match] Entry: 195 | Mod: 1 | Ch: 1 | TS: 6402616 | Ref TS: 6402656 | Diff: -40 | Running Sum: -280 | Running Count: 7
+[Hit Match] Entry: 196 | Mod: 1 | Ch: 2 | TS: 6402616 | Ref TS: 6402656 | Diff: -40 | Running Sum: -280 | Running Count: 7
+[Hit Match] Entry: 197 | Mod: 1 | Ch: 3 | TS: 6402616 | Ref TS: 6402656 | Diff: -40 | Running Sum: -288 | Running Count: 7
+[Hit Match] Entry: 198 | Mod: 1 | Ch: 4 | TS: 6402616 | Ref TS: 6402656 | Diff: -40 | Running Sum: -288 | Running Count: 7
+[Hit Match] Entry: 199 | Mod: 1 | Ch: 5 | TS: 6402616 | Ref TS: 6402656 | Diff: -40 | Running Sum: -288 | Running Count: 7
+[Hit Match] Entry: 200 | Mod: 1 | Ch: 9 | TS: 6402616 | Ref TS: 6402656 | Diff: -40 | Running Sum: -280 | Running Count: 7
+[Hit Match] Entry: 201 | Mod: 1 | Ch: 10 | TS: 6402616 | Ref TS: 6402656 | Diff: -40 | Running Sum: -288 | Running Count: 7
+[Hit Match] Entry: 202 | Mod: 1 | Ch: 11 | TS: 6402616 | Ref TS: 6402656 | Diff: -40 | Running Sum: -288 | Running Count: 7
+[Hit Match] Entry: 204 | Mod: 1 | Ch: 3 | TS: 7402632 | Ref TS: 7402680 | Diff: -48 | Running Sum: -336 | Running Count: 8
+[Hit Match] Entry: 205 | Mod: 1 | Ch: 4 | TS: 7402632 | Ref TS: 7402680 | Diff: -48 | Running Sum: -336 | Running Count: 8
+[Hit Match] Entry: 206 | Mod: 1 | Ch: 5 | TS: 7402632 | Ref TS: 7402680 | Diff: -48 | Running Sum: -336 | Running Count: 8
+[Hit Match] Entry: 207 | Mod: 1 | Ch: 6 | TS: 7402632 | Ref TS: 7402680 | Diff: -48 | Running Sum: -352 | Running Count: 8
+[Hit Match] Entry: 208 | Mod: 1 | Ch: 7 | TS: 7402632 | Ref TS: 7402680 | Diff: -48 | Running Sum: -352 | Running Count: 8
+[Hit Match] Entry: 209 | Mod: 1 | Ch: 8 | TS: 7402632 | Ref TS: 7402680 | Diff: -48 | Running Sum: -352 | Running Count: 8
+[Hit Match] Entry: 210 | Mod: 1 | Ch: 10 | TS: 7402632 | Ref TS: 7402680 | Diff: -48 | Running Sum: -336 | Running Count: 8
+[Hit Match] Entry: 214 | Mod: 1 | Ch: 0 | TS: 7402640 | Ref TS: 7402680 | Diff: -40 | Running Sum: -288 | Running Count: 8
+[Hit Match] Entry: 215 | Mod: 1 | Ch: 1 | TS: 7402640 | Ref TS: 7402680 | Diff: -40 | Running Sum: -320 | Running Count: 8
+[Hit Match] Entry: 216 | Mod: 1 | Ch: 2 | TS: 7402640 | Ref TS: 7402680 | Diff: -40 | Running Sum: -320 | Running Count: 8
+[Hit Match] Entry: 217 | Mod: 1 | Ch: 9 | TS: 7402640 | Ref TS: 7402680 | Diff: -40 | Running Sum: -320 | Running Count: 8
+[Hit Match] Entry: 218 | Mod: 1 | Ch: 11 | TS: 7402640 | Ref TS: 7402680 | Diff: -40 | Running Sum: -328 | Running Count: 8
+[Hit Match] Entry: 219 | Mod: 1 | Ch: 1 | TS: 8402656 | Ref TS: 8402696 | Diff: -40 | Running Sum: -360 | Running Count: 9
+[Hit Match] Entry: 220 | Mod: 1 | Ch: 2 | TS: 8402656 | Ref TS: 8402696 | Diff: -40 | Running Sum: -360 | Running Count: 9
+[Hit Match] Entry: 221 | Mod: 1 | Ch: 3 | TS: 8402656 | Ref TS: 8402696 | Diff: -40 | Running Sum: -376 | Running Count: 9
+[Hit Match] Entry: 222 | Mod: 1 | Ch: 4 | TS: 8402656 | Ref TS: 8402696 | Diff: -40 | Running Sum: -376 | Running Count: 9
+[Hit Match] Entry: 223 | Mod: 1 | Ch: 5 | TS: 8402656 | Ref TS: 8402696 | Diff: -40 | Running Sum: -376 | Running Count: 9
+[Hit Match] Entry: 224 | Mod: 1 | Ch: 6 | TS: 8402656 | Ref TS: 8402696 | Diff: -40 | Running Sum: -392 | Running Count: 9
+[Hit Match] Entry: 225 | Mod: 1 | Ch: 7 | TS: 8402656 | Ref TS: 8402696 | Diff: -40 | Running Sum: -392 | Running Count: 9
+[Hit Match] Entry: 226 | Mod: 1 | Ch: 8 | TS: 8402656 | Ref TS: 8402696 | Diff: -40 | Running Sum: -392 | Running Count: 9
+[Hit Match] Entry: 227 | Mod: 1 | Ch: 9 | TS: 8402656 | Ref TS: 8402696 | Diff: -40 | Running Sum: -360 | Running Count: 9
+[Hit Match] Entry: 228 | Mod: 1 | Ch: 10 | TS: 8402656 | Ref TS: 8402696 | Diff: -40 | Running Sum: -376 | Running Count: 9
+[Hit Match] Entry: 229 | Mod: 1 | Ch: 11 | TS: 8402656 | Ref TS: 8402696 | Diff: -40 | Running Sum: -368 | Running Count: 9
+[Hit Match] Entry: 233 | Mod: 1 | Ch: 0 | TS: 8402664 | Ref TS: 8402696 | Diff: -32 | Running Sum: -320 | Running Count: 9
+[Hit Match] Entry: 234 | Mod: 1 | Ch: 1 | TS: 9402680 | Ref TS: 9402720 | Diff: -40 | Running Sum: -400 | Running Count: 10
+[Hit Match] Entry: 235 | Mod: 1 | Ch: 2 | TS: 9402680 | Ref TS: 9402720 | Diff: -40 | Running Sum: -400 | Running Count: 10
+[Hit Match] Entry: 236 | Mod: 1 | Ch: 3 | TS: 9402680 | Ref TS: 9402720 | Diff: -40 | Running Sum: -416 | Running Count: 10
+[Hit Match] Entry: 237 | Mod: 1 | Ch: 4 | TS: 9402680 | Ref TS: 9402720 | Diff: -40 | Running Sum: -416 | Running Count: 10
+[Hit Match] Entry: 238 | Mod: 1 | Ch: 5 | TS: 9402680 | Ref TS: 9402720 | Diff: -40 | Running Sum: -416 | Running Count: 10
+[Hit Match] Entry: 239 | Mod: 1 | Ch: 6 | TS: 9402680 | Ref TS: 9402720 | Diff: -40 | Running Sum: -432 | Running Count: 10
+[Hit Match] Entry: 240 | Mod: 1 | Ch: 7 | TS: 9402680 | Ref TS: 9402720 | Diff: -40 | Running Sum: -432 | Running Count: 10
+[Hit Match] Entry: 241 | Mod: 1 | Ch: 8 | TS: 9402680 | Ref TS: 9402720 | Diff: -40 | Running Sum: -432 | Running Count: 10
+[Hit Match] Entry: 242 | Mod: 1 | Ch: 9 | TS: 9402680 | Ref TS: 9402720 | Diff: -40 | Running Sum: -400 | Running Count: 10
+[Hit Match] Entry: 243 | Mod: 1 | Ch: 10 | TS: 9402680 | Ref TS: 9402720 | Diff: -40 | Running Sum: -416 | Running Count: 10
+[Hit Match] Entry: 244 | Mod: 1 | Ch: 11 | TS: 9402680 | Ref TS: 9402720 | Diff: -40 | Running Sum: -408 | Running Count: 10
+[Hit Match] Entry: 248 | Mod: 1 | Ch: 0 | TS: 9402688 | Ref TS: 9402720 | Diff: -32 | Running Sum: -352 | Running Count: 10
+[Hit Match] Entry: 307 | Mod: 0 | Ch: 9 | TS: 6402656 | Ref TS: 6402656 | Diff: 0 | Running Sum: 24 | Running Count: 7
+[Hit Match] Entry: 308 | Mod: 0 | Ch: 10 | TS: 6402656 | Ref TS: 6402656 | Diff: 0 | Running Sum: 32 | Running Count: 7
+[Hit Match] Entry: 309 | Mod: 0 | Ch: 11 | TS: 6402656 | Ref TS: 6402656 | Diff: 0 | Running Sum: 24 | Running Count: 7
+[Hit Match] Entry: 313 | Mod: 0 | Ch: 0 | TS: 7402680 | Ref TS: 7402680 | Diff: 0 | Running Sum: 0 | Running Count: 8
+[Hit Match] Entry: 314 | Mod: 0 | Ch: 1 | TS: 7402680 | Ref TS: 7402680 | Diff: 0 | Running Sum: 16 | Running Count: 8
+[Hit Match] Entry: 315 | Mod: 0 | Ch: 2 | TS: 7402680 | Ref TS: 7402680 | Diff: 0 | Running Sum: 24 | Running Count: 8
+[Hit Match] Entry: 316 | Mod: 0 | Ch: 3 | TS: 7402680 | Ref TS: 7402680 | Diff: 0 | Running Sum: 32 | Running Count: 8
+[Hit Match] Entry: 317 | Mod: 0 | Ch: 4 | TS: 7402680 | Ref TS: 7402680 | Diff: 0 | Running Sum: 24 | Running Count: 8
+[Hit Match] Entry: 318 | Mod: 0 | Ch: 5 | TS: 7402680 | Ref TS: 7402680 | Diff: 0 | Running Sum: 24 | Running Count: 8
+[Hit Match] Entry: 319 | Mod: 0 | Ch: 6 | TS: 7402680 | Ref TS: 7402680 | Diff: 0 | Running Sum: 24 | Running Count: 8
+[Hit Match] Entry: 320 | Mod: 0 | Ch: 7 | TS: 7402680 | Ref TS: 7402680 | Diff: 0 | Running Sum: 16 | Running Count: 8
+[Hit Match] Entry: 321 | Mod: 0 | Ch: 8 | TS: 7402680 | Ref TS: 7402680 | Diff: 0 | Running Sum: 32 | Running Count: 8
+[Hit Match] Entry: 322 | Mod: 0 | Ch: 9 | TS: 7402680 | Ref TS: 7402680 | Diff: 0 | Running Sum: 24 | Running Count: 8
+[Hit Match] Entry: 323 | Mod: 0 | Ch: 10 | TS: 7402680 | Ref TS: 7402680 | Diff: 0 | Running Sum: 32 | Running Count: 8
+[Hit Match] Entry: 324 | Mod: 0 | Ch: 11 | TS: 7402680 | Ref TS: 7402680 | Diff: 0 | Running Sum: 24 | Running Count: 8
+[Hit Match] Entry: 328 | Mod: 0 | Ch: 0 | TS: 8402696 | Ref TS: 8402696 | Diff: 0 | Running Sum: 0 | Running Count: 9
+[Hit Match] Entry: 329 | Mod: 0 | Ch: 1 | TS: 8402704 | Ref TS: 8402696 | Diff: 8 | Running Sum: 24 | Running Count: 9
+[Hit Match] Entry: 330 | Mod: 0 | Ch: 2 | TS: 8402704 | Ref TS: 8402696 | Diff: 8 | Running Sum: 32 | Running Count: 9
+[Hit Match] Entry: 331 | Mod: 0 | Ch: 3 | TS: 8402704 | Ref TS: 8402696 | Diff: 8 | Running Sum: 40 | Running Count: 9
+[Hit Match] Entry: 332 | Mod: 0 | Ch: 4 | TS: 8402704 | Ref TS: 8402696 | Diff: 8 | Running Sum: 32 | Running Count: 9
+[Hit Match] Entry: 333 | Mod: 0 | Ch: 5 | TS: 8402704 | Ref TS: 8402696 | Diff: 8 | Running Sum: 32 | Running Count: 9
+[Hit Match] Entry: 334 | Mod: 0 | Ch: 6 | TS: 8402704 | Ref TS: 8402696 | Diff: 8 | Running Sum: 32 | Running Count: 9
+[Hit Match] Entry: 335 | Mod: 0 | Ch: 7 | TS: 8402704 | Ref TS: 8402696 | Diff: 8 | Running Sum: 24 | Running Count: 9
+[Hit Match] Entry: 336 | Mod: 0 | Ch: 8 | TS: 8402704 | Ref TS: 8402696 | Diff: 8 | Running Sum: 40 | Running Count: 9
+[Hit Match] Entry: 337 | Mod: 0 | Ch: 9 | TS: 8402704 | Ref TS: 8402696 | Diff: 8 | Running Sum: 32 | Running Count: 9
+[Hit Match] Entry: 338 | Mod: 0 | Ch: 10 | TS: 8402704 | Ref TS: 8402696 | Diff: 8 | Running Sum: 40 | Running Count: 9
+[Hit Match] Entry: 339 | Mod: 0 | Ch: 11 | TS: 8402704 | Ref TS: 8402696 | Diff: 8 | Running Sum: 32 | Running Count: 9
+[Hit Match] Entry: 343 | Mod: 0 | Ch: 0 | TS: 9402720 | Ref TS: 9402720 | Diff: 0 | Running Sum: 0 | Running Count: 10
+[Hit Match] Entry: 344 | Mod: 0 | Ch: 1 | TS: 9402728 | Ref TS: 9402720 | Diff: 8 | Running Sum: 32 | Running Count: 10
+[Hit Match] Entry: 345 | Mod: 0 | Ch: 2 | TS: 9402728 | Ref TS: 9402720 | Diff: 8 | Running Sum: 40 | Running Count: 10
+[Hit Match] Entry: 346 | Mod: 0 | Ch: 3 | TS: 9402728 | Ref TS: 9402720 | Diff: 8 | Running Sum: 48 | Running Count: 10
+[Hit Match] Entry: 347 | Mod: 0 | Ch: 4 | TS: 9402728 | Ref TS: 9402720 | Diff: 8 | Running Sum: 40 | Running Count: 10
+[Hit Match] Entry: 348 | Mod: 0 | Ch: 5 | TS: 9402728 | Ref TS: 9402720 | Diff: 8 | Running Sum: 40 | Running Count: 10
+[Hit Match] Entry: 349 | Mod: 0 | Ch: 6 | TS: 9402728 | Ref TS: 9402720 | Diff: 8 | Running Sum: 40 | Running Count: 10
+[Hit Match] Entry: 350 | Mod: 0 | Ch: 7 | TS: 9402728 | Ref TS: 9402720 | Diff: 8 | Running Sum: 32 | Running Count: 10
+[Hit Match] Entry: 351 | Mod: 0 | Ch: 8 | TS: 9402728 | Ref TS: 9402720 | Diff: 8 | Running Sum: 48 | Running Count: 10
+[Hit Match] Entry: 352 | Mod: 0 | Ch: 9 | TS: 9402728 | Ref TS: 9402720 | Diff: 8 | Running Sum: 40 | Running Count: 10
+[Hit Match] Entry: 353 | Mod: 0 | Ch: 10 | TS: 9402728 | Ref TS: 9402720 | Diff: 8 | Running Sum: 48 | Running Count: 10
+[Hit Match] Entry: 354 | Mod: 0 | Ch: 11 | TS: 9402728 | Ref TS: 9402720 | Diff: 8 | Running Sum: 40 | Running Count: 10
+[Module 0, Channel 0] Sum: 0 / Count: 10 = Mean: 0
+[Module 0, Channel 1] Sum: 32 / Count: 10 = Mean: 3.2
+[Module 0, Channel 2] Sum: 40 / Count: 10 = Mean: 4
+[Module 0, Channel 3] Sum: 48 / Count: 10 = Mean: 4.8
+[Module 0, Channel 4] Sum: 40 / Count: 10 = Mean: 4
+[Module 0, Channel 5] Sum: 40 / Count: 10 = Mean: 4
+[Module 0, Channel 6] Sum: 40 / Count: 10 = Mean: 4
+[Module 0, Channel 7] Sum: 32 / Count: 10 = Mean: 3.2
+[Module 0, Channel 8] Sum: 48 / Count: 10 = Mean: 4.8
+[Module 0, Channel 9] Sum: 40 / Count: 10 = Mean: 4
+[Module 0, Channel 10] Sum: 48 / Count: 10 = Mean: 4.8
+[Module 0, Channel 11] Sum: 40 / Count: 10 = Mean: 4
+[Module 1, Channel 0] Sum: -352 / Count: 10 = Mean: -35.2
+[Module 1, Channel 1] Sum: -400 / Count: 10 = Mean: -40
+[Module 1, Channel 2] Sum: -400 / Count: 10 = Mean: -40
+[Module 1, Channel 3] Sum: -416 / Count: 10 = Mean: -41.6
+[Module 1, Channel 4] Sum: -416 / Count: 10 = Mean: -41.6
+[Module 1, Channel 5] Sum: -416 / Count: 10 = Mean: -41.6
+[Module 1, Channel 6] Sum: -432 / Count: 10 = Mean: -43.2
+[Module 1, Channel 7] Sum: -432 / Count: 10 = Mean: -43.2
+[Module 1, Channel 8] Sum: -432 / Count: 10 = Mean: -43.2
+[Module 1, Channel 9] Sum: -400 / Count: 10 = Mean: -40
+[Module 1, Channel 10] Sum: -416 / Count: 10 = Mean: -41.6
+[Module 1, Channel 11] Sum: -408 / Count: 10 = Mean: -40.8
+Error in <TGraphPainter::PaintGraph>: illegal number of points (0)

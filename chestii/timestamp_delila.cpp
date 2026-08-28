@@ -42,31 +42,32 @@ void timestamp_delila()
     const Int_t N_MODULES = 2;
     const Int_t total_channels = N_MODULES * CHANNELS_PER_MODULE;
 
-    std::vector<TH1F *> h_freq(total_channels, nullptr);
-    std::vector<TH1F *> h_ch_dif(total_channels, nullptr);
-
-    for (int mod = 0; mod < N_MODULES; ++mod)
+    TH1F *h_freq[N_MODULES][total_channels];
+    TH1F *h_ch_dif[N_MODULES][total_channels];
+    double peak = 1.0000e6;
+    double window = 500.0;
+    for (int mod = 0; mod < N_MODULES; mod++)
     {
         for (int ch = 0; ch < CHANNELS_PER_MODULE; ++ch)
         {
-            int global_ch = mod * CHANNELS_PER_MODULE + ch;
+            h_freq[mod][ch] = new TH1F(
+                Form("h_freq_m%d_ch%d", mod, ch),
+                Form("Module %d Channel %d;#Delta t;Counts", mod, ch),
+                200, 1000000.0, 1000040.0);
 
-            TString name_freq = Form("h_freq_m%d_ch%d", mod, ch);
-            TString title_freq = Form("Mod %d Ch %d #Delta t;#Delta t [ns];Counts", mod, ch);
-            h_freq[global_ch] = new TH1F(name_freq, title_freq, 10000, 900000, 1100000);
-
-            TString name_diff = Form("h_ch_dif_m%d_ch%d", mod, ch);
-            TString title_diff = Form("Mod %d Ch %d Difference;#Delta TS wrt Mod0-Ch0 [ns];Counts", mod, ch);
-            h_ch_dif[global_ch] = new TH1F(name_diff, title_diff, 2000, -1000, 1000);
+            h_ch_dif[mod][ch] = new TH1F(
+                Form("h_ch_dif_m%d_ch%d", mod, ch),
+                Form("Module %d Channel %d;Timestamp difference;Counts",
+                     mod, ch),
+                2000, 0, 200);
         }
     }
-
     std::vector<Long64_t> ref_timestamps;
 
     for (Long64_t i = 0; i < nEntries; ++i)
     {
         tree->GetEntry(i);
-        if (module == 1 && channel == 0)
+        if (module == 0 && channel == 0)
         {
             ref_timestamps.push_back(timestamp);
         }
@@ -90,16 +91,83 @@ void timestamp_delila()
         }
 
         double ch_difference = (closest_ref != -1) ? (current_ts - closest_ref) : 0;
+        h_ch_dif[current_module][current_channel]->Fill(ch_difference);
 
         if (prev_timestamp[current_channel] > 0)
         {
             double another_difference = prev_timestamp[current_channel] - current_ts;
+            h_freq[current_module][current_channel]->Fill(std::abs(another_difference));
             std::cout << "Entry: " << i
                       << " | Channel: " << current_channel
                       << " | Current TS: " << current_ts
+                      << "Mod" << current_module
                       << " | Prev TS: " << prev_timestamp[current_channel]
-                      << " | Frequency (Hz): " << another_difference << std::endl;
+                      << "Ch difference" << ch_difference
+                      << " | Frequency (Hz): " << std::abs(another_difference) << std::endl;
         }
         prev_timestamp[current_channel] = current_ts;
     }
+
+    int nCols = std::ceil(std::sqrt(CHANNELS_PER_MODULE));
+    int nRows = std::ceil(static_cast<double>(CHANNELS_PER_MODULE) / nCols);
+
+    TCanvas *test = new TCanvas("test", "Channel test", 1200, 600);
+
+    test->Divide(2, 1);
+    test->cd(1);
+
+    h_freq[0][0]->Draw();
+
+    test->cd(2);
+    // h_ch_dif[0][0]->Draw();
+
+    h_ch_dif[1][2]->GetXaxis()->SetRangeUser(30, 50);
+    h_ch_dif[1][2]->Draw();
+
+    // TCanvas *c = new TCanvas("c", "Channel Frequencies", 1200, 600);
+    // c->Divide(nCols, nRows);
+
+    // TCanvas *c1 = new TCanvas("c1", "Channel Frequencies", 1200, 600);
+    // c1->Divide(nCols, nRows);
+
+    // for (int j = 0; j < CHANNELS_PER_MODULE; j++)
+    // {
+    //     c->cd(j + 1);
+    //     gPad->SetLogy();
+    //     h_freq[0][j]->Draw();
+
+    //     c1->cd(j + 1);
+    //     gPad->SetLogy();
+    //     h_ch_dif[0][j]->Draw();
+    // }
+    // c->Update();
+    // c1->Update();
+    // TCanvas *c2 = new TCanvas("c2", "Channel Differences", 1200, 600);
+    // c2->Divide(nCols, nRows);
+
+    // TCanvas *c3 = new TCanvas("c3", "Channel Differences", 1200, 600);
+    // c3->Divide(nCols, nRows);
+
+    // for (int j = 0; j < CHANNELS_PER_MODULE; j++)
+    // {
+    //     c2->cd(j + 1);
+    //     gPad->SetLogy();
+    //     h_ch_dif[1][j]->Draw();
+    //     c3->cd(j + 1);
+    //     gPad->SetLogy();
+    //     h_freq[1][j]->Draw();
+    // }
+    // c2->Update();
+    // c3->Update();
+    // c->Update();
+
+    // TCanvas *c2 = new TCanvas("c2", "Channel Differences", 1200, 600);
+    // c2->Divide(total_channels, 1);
+
+    // for (int j = 0; j < total_channels; j++)
+    // {
+    //     c2->cd(j + 1);
+    //     gPad->SetLogy();
+    //     h_ch_dif[j]->Draw();
+    // }
 }

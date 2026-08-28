@@ -19,7 +19,7 @@ int main(int argc, char **argv)
     // std::freopen("output.txt", "a", stderr);
     gErrorIgnoreLevel = kWarning;
 
-    const char *root_filename = (argc > 1) ? argv[1] : "data/run20042.root";
+    const char *root_filename = (argc > 1) ? argv[1] : "data/run20064.root";
     std::string csv_file = "output_SIGMA.csv";
 
     tr t(root_filename);

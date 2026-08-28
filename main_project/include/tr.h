@@ -30,7 +30,7 @@ public:
    UChar_t channel;
    UShort_t energy;
    UShort_t energy_short;
-   ULong64_t timestamp;
+   Double_t timestamp;
    ULong64_t flags;
    ULong64_t user_info[4];
    Bool_t has_waveform;
