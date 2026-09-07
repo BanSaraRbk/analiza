@@ -11,7 +11,7 @@ class tr;
 class timestamp
 {
 public:
-    timestamp(int total_channels);
+    timestamp(int total_channels, int total_modules);
     ~timestamp();
 
     void Initialize_Hist();
@@ -23,5 +23,6 @@ private:
     std::vector<TH1F *> h_ch_dif;
     TGraph *fGraph;
     int fTotalChannels;
+    int fTotalModules;
 };
 #endif

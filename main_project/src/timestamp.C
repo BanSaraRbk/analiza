@@ -15,8 +15,8 @@
 #include <TGraph.h>
 #include <TF1.h>
 
-timestamp::timestamp(int total_channels)
-    : fTotalChannels(total_channels)
+timestamp::timestamp(int total_channels, int total_modules)
+    : fTotalChannels(total_channels), fTotalModules(total_modules)
 {
     Initialize_Hist();
     fGraph = new TGraph();
@@ -73,12 +73,12 @@ void timestamp::ProcessTree(tr *eventReader)
     Long64_t reference = -1;
     std::vector<Long64_t> prev_timestamp(fTotalChannels);
     const Long64_t WINDOW = 100; // ns
-    std::vector<std::vector<double>> sums(2, std::vector<double>(fTotalChannels, 0.0));
+    std::vector<std::vector<double>> sums(fTotalModules, std::vector<double>(fTotalChannels, 0.0));
     std::vector<double> results(fTotalChannels, 0.0);
     results.clear();
 
-    std::vector<std::vector<double>> mean(2, std::vector<double>(fTotalChannels, 0.0));
-    std::vector<std::vector<int>> counter(2, std::vector<int>(fTotalChannels, 0)); // int entriesss = 1000;
+    std::vector<std::vector<double>> mean(fTotalModules, std::vector<double>(fTotalChannels, 0.0));
+    std::vector<std::vector<int>> counter(fTotalModules, std::vector<int>(fTotalChannels, 0)); // int entriesss = 1000;
     std::vector<Long64_t> ref_timestamps;
 
     for (Long64_t i = 0; i < eventReader->fChain->GetEntries() && i < 500; ++i)
@@ -157,23 +157,27 @@ void timestamp::ProcessTree(tr *eventReader)
 
         //   mean[current_module][current_channel] = sums[current_module][current_channel] / counter[current_module][current_channel];
     }
-    for (int mod = 0; mod < 2; mod++)
+    for (int mod = 0; mod < fTotalModules; mod++)
     {
         for (int i = 0; i < fTotalChannels; i++)
         {
             mean[mod][i] = sums[mod][i] / counter[mod][i];
             std::cout << "[Module " << mod << ", Channel " << i << "] "
                       << "Sum: " << sums[mod][i] << " / "
-                      << "Count: " << counter[1][i] << " = "
+                      << "Count: " << counter[mod][i] << " = "
                       << "Mean: " << mean[mod][i] << '\n';
         }
     }
     TCanvas *c1 = new TCanvas("c_means", "Mean vs Channel", 1200, 500);
-    c1->Divide(2, 1);
+    c1->Divide(fTotalModules, 1);
 
-    Color_t colors[2] = {kAzure + 2, kOrange + 7};
+    Color_t colors[fTotalModules];
+    for (int mod = 0; mod < fTotalModules; mod++)
+    {
+        colors[mod] = kAzure + 2 + mod; // Assign different colors to each module
+    }
 
-    for (int mod = 0; mod < 2; mod++)
+    for (int mod = 0; mod < fTotalModules; mod++)
     {
         c1->cd(mod + 1);
         gPad->SetGrid();

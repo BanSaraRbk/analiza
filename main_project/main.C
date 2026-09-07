@@ -28,9 +28,14 @@ int main(int argc, char **argv)
         std::cerr << "Error: Tree could not be loaded!" << std::endl;
         return 1;
     }
-    int N_channels;
+    int N_channels, N_modules;
+
+    std::cout << "Cate module doriti??" << std::endl;
+    std::cin >> N_modules;
+
     std::cout << "Cate canale doriti??" << std::endl;
     std::cin >> N_channels;
+
     //  int N_channels = 2;
     // LinearityAnalyzer analyzer;
 
@@ -43,10 +48,10 @@ int main(int argc, char **argv)
     // wave.InitHistograms();
     // wave.Draw();
 
-    timestamp timestamp(N_channels);
+    timestamp timestamp(N_channels, N_modules);
     timestamp.Initialize_Hist();
     timestamp.ProcessTree(&t);
-    timestamp.DrawHistograms();
+    //  timestamp.DrawHistograms();
 
     app.Run();
     return 0;
