@@ -74,11 +74,15 @@ void timestamp::ProcessTree(tr *eventReader)
     std::vector<Long64_t> prev_timestamp(fTotalChannels);
     const Long64_t WINDOW = 100; // ns
     std::vector<std::vector<double>> sums(fTotalModules, std::vector<double>(fTotalChannels, 0.0));
+    std::vector<std::vector<double>> sums_frq(fTotalModules, std::vector<double>(fTotalChannels, 0.0));
+
     std::vector<double> results(fTotalChannels, 0.0);
     results.clear();
 
     std::vector<std::vector<double>> mean(fTotalModules, std::vector<double>(fTotalChannels, 0.0));
     std::vector<std::vector<int>> counter(fTotalModules, std::vector<int>(fTotalChannels, 0)); // int entriesss = 1000;
+    std::vector<std::vector<double>> mean_frq(fTotalModules, std::vector<double>(fTotalChannels, 0.0));
+    std::vector<std::vector<int>> counter_frq(fTotalModules, std::vector<int>(fTotalChannels, 0));
     std::vector<Long64_t> ref_timestamps;
 
     for (Long64_t i = 0; i < eventReader->fChain->GetEntries() && i < 500; ++i)
@@ -101,7 +105,7 @@ void timestamp::ProcessTree(tr *eventReader)
         if (current_module < 0 || current_module >= static_cast<int>(sums.size()) ||
             current_channel < 0 || current_channel >= static_cast<int>(sums[current_module].size()))
         {
-            // Ignores channels that exceed your allocated buffer size
+
             continue;
         }
         auto it = std::lower_bound(ref_timestamps.begin(), ref_timestamps.end(), current_ts - WINDOW);
@@ -111,7 +115,7 @@ void timestamp::ProcessTree(tr *eventReader)
         }
         if (closest_ref == -1)
         {
-            continue; // Moves straight to the next event/entry in the loop
+            continue;
         }
 
         double ch_difference = current_ts - closest_ref;
@@ -120,52 +124,59 @@ void timestamp::ProcessTree(tr *eventReader)
             sums.at(current_module).at(current_channel) += ch_difference;
             counter.at(current_module).at(current_channel)++;
 
-            std::cout << "[Hit Match] Entry: " << i
-                      << " | Mod: " << current_module
-                      << " | Ch: " << current_channel
-                      << " | TS: " << current_ts
-                      << " | Ref TS: " << closest_ref
-                      << " | Diff: " << ch_difference
-                      << " | Running Sum: " << sums.at(current_module).at(current_channel)
-                      << " | Running Count: " << counter.at(current_module).at(current_channel)
-                      << '\n';
+            // std::cout << "[Hit Match] Entry: " << i
+            //           << " | Mod: " << current_module
+            //           << " | Ch: " << current_channel
+            //           << " | TS: " << current_ts
+            //           << " | Ref TS: " << closest_ref
+            //           << " | Diff: " << ch_difference
+            //           << " | Running Sum: " << sums.at(current_module).at(current_channel)
+            //           << " | Running Count: " << counter.at(current_module).at(current_channel)
+            //           << '\n';
         }
         else
         {
-            // Optional: Print when a hit fails to find a coincidence reference
-            std::cout << "[No Match] Mod: " << current_module << " | Ch: " << current_channel << " | TS: " << current_ts << '\n';
+            // std::cout << "[No Match] Mod: " << current_module << " | Ch: " << current_channel << " | TS: " << current_ts << '\n';
         }
-        // std::cout << "Entry: " << i
-        //           << " | Canal: " << current_channel
-        //           << " | Current TS: " << current_ts
-        //           << " | Current Module: " << current_module
-        //           << " | Ref TS (Ch0): " << closest_ref
-        //           << " | Diferenta fata de Ch0: " << ch_difference << std::endl;
-        // //  h_ch_dif[j]->Fill(ch_difference);
 
         Long64_t delta_prev = current_ts - prev_timestamp[current_channel];
 
-        // std::cout << "Entry: " << i
-        //           << " | Channel: " << current_channel
-        //           << " | Current TS: " << current_ts
-        //           << " | Prev TS: " << prev_timestamp[j]
-        //           << " | Frequency (Hz): " << freq << std::endl;
+        if (delta_prev > 0 && prev_timestamp[current_channel] != 0)
+        {
+            sums_frq.at(current_module).at(current_channel) += delta_prev;
+            counter_frq.at(current_module).at(current_channel)++;
+            // std::cout << "counter" << counter_frq.at(current_module).at(current_channel) << std::endl;
+            // std::cout << "sums" << sums_frq.at(current_module).at(current_channel) << std::endl;
+            // std::cout << "Mean frequency for Module " << current_module
+            //           << ", Channel " << current_channel
+            //           << ": " << mean_frq[current_module][current_channel] / 1e3 << " kHz"
+            //           << std::endl;
+            // std::cout << "Module: " << current_module
 
-        // h_freq[j]->Fill(freq);
-
+            //           << ", Channel: " << current_channel
+            //           << ", Timestamp: " << current_ts
+            //           << ", Previous Timestamp: " << prev_timestamp[current_channel]
+            //           << ", Delta from previous: " << delta_prev
+            //           << std::endl;
+        }
         prev_timestamp[current_channel] = current_ts;
-
-        //   mean[current_module][current_channel] = sums[current_module][current_channel] / counter[current_module][current_channel];
     }
+
+    // std::cout << "mean" << mean_frq[current_module][current_channel]
+    //           << "current channel" << current_channel
+    //           << "current module" << current_module
+    //           << std::endl;
     for (int mod = 0; mod < fTotalModules; mod++)
     {
         for (int i = 0; i < fTotalChannels; i++)
         {
             mean[mod][i] = sums[mod][i] / counter[mod][i];
+            mean_frq[mod][i] = sums_frq.at(mod).at(i) / counter_frq.at(mod).at(i); // Convert ns to seconds for frequency
+
             std::cout << "[Module " << mod << ", Channel " << i << "] "
-                      << "Sum: " << sums[mod][i] << " / "
-                      << "Count: " << counter[mod][i] << " = "
-                      << "Mean: " << mean[mod][i] << '\n';
+
+                      << "Mean channel difference: " << mean[mod][i] << " ns | "
+                      << "Mean frequency: " << mean_frq[mod][i] / 1e3 << '\n';
         }
     }
     TCanvas *c1 = new TCanvas("c_means", "Mean vs Channel", 1200, 500);
@@ -188,7 +199,7 @@ void timestamp::ProcessTree(tr *eventReader)
 
         for (int i = 0; i < fTotalChannels; i++)
         {
-            gr->SetPoint(i, i, mean[mod][i]);
+            gr->SetPoint(i, i, -mean[mod][i]);
         }
 
         gr->SetMarkerStyle(20);

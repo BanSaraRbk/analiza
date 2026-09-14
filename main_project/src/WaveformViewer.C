@@ -45,12 +45,17 @@ void WaveformViewer::Process(tr *eventReader)
         eventReader->fChain->GetEntry(jentry);
 
         const int ch = static_cast<int>(eventReader->channel);
+        const int module = static_cast<int>(eventReader->module);
+
+        if (module >= 0 && module != kTargetModule)
+            continue;
 
         if (ch >= 0 && ch < kNumChannels && eventReader->analog_probe1 != nullptr)
         {
             for (size_t sample = 0; sample < eventReader->analog_probe1->size(); ++sample)
             {
-                hWaveforms[ch]->Fill(sample, (*eventReader->analog_probe1)[sample]);
+                // std::cout << "Sample: " << sample << ", Value: " << (*eventReader->analog_probe1)[sample] << std::endl;
+                hWaveforms[module][ch].Fill(sample, (*eventReader->analog_probe1)[sample]);
             }
         }
     }
@@ -63,12 +68,18 @@ void WaveformViewer::Draw()
     int nCols = std::ceil(std::sqrt(kNumChannels));
     int nRows = std::ceil(static_cast<double>(kNumChannels) / nCols);
 
-    TCanvas *c3 = new TCanvas("c3", "Waveforms Canvas", 1200, 800);
-    c3->Divide(nCols, nRows);
-
-    for (int ch = 0; ch < kNumChannels; ++ch)
+    for (int module = 0; module < kTargetModule; ++module)
     {
-        c3->cd(ch + 1);
-        hWaveforms[ch]->Draw("COLZ");
+        TString cName = Form("c_module_%d", module);
+        TString cTitle = Form("Waveforms Module %d", module);
+        TCanvas *c = new TCanvas(cName, cTitle, 1200, 800);
+        c->Divide(nCols, nRows);
+
+        for (int ch = 0; ch < kNumChannels; ++ch)
+        {
+            c->cd(ch + 1);
+            hWaveforms[module][ch].Draw("COLZ");
+        }
+        c->Update();
     }
 }

@@ -21,6 +21,7 @@ public:
 private:
     std::vector<TH1F *> h_freq;
     std::vector<TH1F *> h_ch_dif;
+
     TGraph *fGraph;
     int fTotalChannels;
     int fTotalModules;

@@ -103,7 +103,7 @@ void tr::Init(TTree *tree)
    fChain->SetBranchAddress("module", &module, &b_module);
    fChain->SetBranchAddress("channel", &channel, &b_channel);
    fChain->SetBranchAddress("energy", &energy, &b_energy);
-   fChain->SetBranchAddress("waveform", &analog_probe1, &b_analog_probe1);
+   fChain->SetBranchAddress("analog_probe1", &analog_probe1, &b_analog_probe1);
 
    // fChain->SetBranchAddress("energy_short", &energy_short, &b_energy_short);
    fChain->SetBranchAddress("timestamp_ns", &timestamp, &b_timestamp);

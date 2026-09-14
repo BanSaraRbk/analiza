@@ -19,7 +19,7 @@ int main(int argc, char **argv)
     // std::freopen("output.txt", "a", stderr);
     gErrorIgnoreLevel = kWarning;
 
-    const char *root_filename = (argc > 1) ? argv[1] : "data/run20064.root";
+    const char *root_filename = (argc > 1) ? argv[1] : "data/run20066.root";
     std::string csv_file = "output_SIGMA.csv";
 
     tr t(root_filename);
@@ -42,16 +42,16 @@ int main(int argc, char **argv)
     // analyzer.process_linearity(csv_file, &t, N_channels);
 
     // std::fflush(stdout);
-    // std::fflush(stderr);
-    // WaveformViewer wave(N_channels);
+    // // std::fflush(stderr);
+    // WaveformViewer wave(N_channels, N_modules);
     // wave.Process(&t);
-    // wave.InitHistograms();
+    // // // wave.InitHistograms();
     // wave.Draw();
 
     timestamp timestamp(N_channels, N_modules);
     timestamp.Initialize_Hist();
     timestamp.ProcessTree(&t);
-    //  timestamp.DrawHistograms();
+    // timestamp.DrawHistograms();
 
     app.Run();
     return 0;
