@@ -13,23 +13,30 @@ WaveformViewer::WaveformViewer(int numChannels, int targetModule)
 
 WaveformViewer::~WaveformViewer()
 {
-    for (auto hist : hWaveforms)
+    for (int module = 0; module < kTargetModule; ++module)
     {
-        if (hist)
-            delete hist;
+        for (int ch = 0; ch < kNumChannels; ++ch)
+        {
+            if (hWaveforms[module][ch])
+                delete hWaveforms[module][ch];
+        }
     }
 }
 
 void WaveformViewer::InitHistograms()
 {
-    hWaveforms.resize(kNumChannels);
-    for (int ch = 0; ch < kNumChannels; ++ch)
+    hWaveforms.resize(kTargetModule);
+    for (int module = 0; module < kTargetModule; ++module)
     {
-        hWaveforms[ch] = new TH2D(
-            Form("h_wave_ch%d", ch),
-            Form("Waveform Channel %d;Sample;Amplitude", ch),
-            400, 0, 3000,
-            400, 7000, 20000);
+        hWaveforms[module].resize(kNumChannels);
+        for (int ch = 0; ch < kNumChannels; ++ch)
+        {
+            hWaveforms[module][ch] = new TH2D(
+                Form("h_wave_mod%d_ch%d", module, ch),
+                Form("Waveform Channel %d;Sample;Amplitude", ch),
+                400, 0, 500,
+                400, 7000, 20000);
+        }
     }
 }
 
@@ -47,15 +54,11 @@ void WaveformViewer::Process(tr *eventReader)
         const int ch = static_cast<int>(eventReader->channel);
         const int module = static_cast<int>(eventReader->module);
 
-        if (module >= 0 && module != kTargetModule)
-            continue;
-
-        if (ch >= 0 && ch < kNumChannels && eventReader->analog_probe1 != nullptr)
+        if (ch >= 0 && ch < kNumChannels && module < kTargetModule && eventReader->analog_probe1 != nullptr)
         {
             for (size_t sample = 0; sample < eventReader->analog_probe1->size(); ++sample)
             {
-                // std::cout << "Sample: " << sample << ", Value: " << (*eventReader->analog_probe1)[sample] << std::endl;
-                hWaveforms[module][ch].Fill(sample, (*eventReader->analog_probe1)[sample]);
+                hWaveforms[module][ch]->Fill(sample, (*eventReader->analog_probe1)[sample]);
             }
         }
     }
@@ -70,16 +73,17 @@ void WaveformViewer::Draw()
 
     for (int module = 0; module < kTargetModule; ++module)
     {
-        TString cName = Form("c_module_%d", module);
-        TString cTitle = Form("Waveforms Module %d", module);
-        TCanvas *c = new TCanvas(cName, cTitle, 1200, 800);
+        // Unique name ("c_mod0", "c_mod1", ...) and title per canvas
+        TCanvas *c = new TCanvas(
+            Form("c_mod%d", module),
+            Form("Waveforms - Module %d", module),
+            1200, 800);
         c->Divide(nCols, nRows);
 
         for (int ch = 0; ch < kNumChannels; ++ch)
         {
             c->cd(ch + 1);
-            hWaveforms[module][ch].Draw("COLZ");
+            hWaveforms[module][ch]->Draw("COLZ");
         }
-        c->Update();
     }
 }

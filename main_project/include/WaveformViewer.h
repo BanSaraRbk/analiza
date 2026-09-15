@@ -17,7 +17,7 @@ public:
     void Draw();
 
 private:
-    std::vector<TH2D *> hWaveforms;
+    std::vector<std::vector<TH2D *>> hWaveforms;
     int kNumChannels;
     int kTargetModule;
 

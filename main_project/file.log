@@ -1,32 +1,3 @@
-Using file: data/run20066.root
+Using file: data/run20067.root
 Cate module doriti??
 Cate canale doriti??
-Process timestamp from reader
-[Module 0, Channel 0] Mean channel difference: 0 ns | Mean frequency: 1000.02
-[Module 0, Channel 1] Mean channel difference: 1.23077 ns | Mean frequency: 1000.02
-[Module 0, Channel 2] Mean channel difference: 2.46154 ns | Mean frequency: 1000.02
-[Module 0, Channel 3] Mean channel difference: 4.92308 ns | Mean frequency: 1000.02
-[Module 0, Channel 4] Mean channel difference: 3.07692 ns | Mean frequency: 1000.02
-[Module 0, Channel 5] Mean channel difference: 2.46154 ns | Mean frequency: 1000.02
-[Module 0, Channel 6] Mean channel difference: 2.46154 ns | Mean frequency: 1000.02
-[Module 0, Channel 7] Mean channel difference: 2.46154 ns | Mean frequency: 1000.02
-[Module 0, Channel 8] Mean channel difference: 4.30769 ns | Mean frequency: 1000.02
-[Module 0, Channel 9] Mean channel difference: 3.69231 ns | Mean frequency: 1000.02
-[Module 0, Channel 10] Mean channel difference: 4 ns | Mean frequency: 1000.02
-[Module 0, Channel 11] Mean channel difference: 2.66667 ns | Mean frequency: 1000.02
-[Module 0, Channel 12] Mean channel difference: 2.66667 ns | Mean frequency: 1000.02
-[Module 0, Channel 13] Mean channel difference: 4.66667 ns | Mean frequency: 1000.02
-[Module 1, Channel 0] Mean channel difference: -35.0769 ns | Mean frequency: 1000.02
-[Module 1, Channel 1] Mean channel difference: -40.6154 ns | Mean frequency: 1000.02
-[Module 1, Channel 2] Mean channel difference: -41.2308 ns | Mean frequency: 1000.02
-[Module 1, Channel 3] Mean channel difference: -41.8462 ns | Mean frequency: 1000.02
-[Module 1, Channel 4] Mean channel difference: -43.0769 ns | Mean frequency: 1000.02
-[Module 1, Channel 5] Mean channel difference: -43.0769 ns | Mean frequency: 1000.02
-[Module 1, Channel 6] Mean channel difference: -43.6923 ns | Mean frequency: 1000.02
-[Module 1, Channel 7] Mean channel difference: -44.3077 ns | Mean frequency: 1000.02
-[Module 1, Channel 8] Mean channel difference: -43.0769 ns | Mean frequency: 1000.02
-[Module 1, Channel 9] Mean channel difference: -40.6154 ns | Mean frequency: 1000.02
-[Module 1, Channel 10] Mean channel difference: -43.0769 ns | Mean frequency: 1000.02
-[Module 1, Channel 11] Mean channel difference: -41.8462 ns | Mean frequency: 1000.02
-[Module 1, Channel 12] Mean channel difference: -43.6923 ns | Mean frequency: 1000.02
-[Module 1, Channel 13] Mean channel difference: -42.4615 ns | Mean frequency: 1000.02

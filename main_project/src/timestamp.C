@@ -85,7 +85,7 @@ void timestamp::ProcessTree(tr *eventReader)
     std::vector<std::vector<int>> counter_frq(fTotalModules, std::vector<int>(fTotalChannels, 0));
     std::vector<Long64_t> ref_timestamps;
 
-    for (Long64_t i = 0; i < eventReader->fChain->GetEntries() && i < 500; ++i)
+    for (Long64_t i = 0; i < eventReader->fChain->GetEntries() && i < 1000; ++i)
     {
         eventReader->fChain->GetEntry(i);
         if (eventReader->module == 0 && eventReader->channel == 0)
@@ -94,7 +94,7 @@ void timestamp::ProcessTree(tr *eventReader)
             // std::cout << eventReader->timestamp << std::endl;
         }
     }
-    for (int i = 0; i < eventReader->fChain->GetEntries() && i < 500; i++)
+    for (int i = 0; i < eventReader->fChain->GetEntries(); i++)
     {
         eventReader->fChain->GetEntry(i);
         Int_t current_channel = eventReader->channel;
@@ -145,12 +145,17 @@ void timestamp::ProcessTree(tr *eventReader)
         {
             sums_frq.at(current_module).at(current_channel) += delta_prev;
             counter_frq.at(current_module).at(current_channel)++;
-            // std::cout << "counter" << counter_frq.at(current_module).at(current_channel) << std::endl;
-            // std::cout << "sums" << sums_frq.at(current_module).at(current_channel) << std::endl;
-            // std::cout << "Mean frequency for Module " << current_module
-            //           << ", Channel " << current_channel
-            //           << ": " << mean_frq[current_module][current_channel] / 1e3 << " kHz"
-            //           << std::endl;
+            mean_frq[current_module][current_channel] = sums_frq.at(current_module).at(current_channel) / counter_frq.at(current_module).at(current_channel);
+            std::cout << "counter " << counter_frq.at(current_module).at(current_channel)
+                      << " sums" << sums_frq.at(current_module).at(current_channel)
+                      << " Mean frequency for Module " << current_module
+                      << " delta prev " << delta_prev
+                      << " current ts " << current_ts
+                      << " prev ts " << prev_timestamp[current_channel]
+                      << " entry i " << i
+                      << ", Channel " << current_channel
+                      << ": " << mean_frq[current_module][current_channel] / 1e3 << " kHz"
+                      << std::endl;
             // std::cout << "Module: " << current_module
 
             //           << ", Channel: " << current_channel
@@ -171,11 +176,11 @@ void timestamp::ProcessTree(tr *eventReader)
         for (int i = 0; i < fTotalChannels; i++)
         {
             mean[mod][i] = sums[mod][i] / counter[mod][i];
-            mean_frq[mod][i] = sums_frq.at(mod).at(i) / counter_frq.at(mod).at(i); // Convert ns to seconds for frequency
+            // mean_frq[mod][i] = sums_frq.at(mod).at(i) / counter_frq.at(mod).at(i);
 
             std::cout << "[Module " << mod << ", Channel " << i << "] "
 
-                      << "Mean channel difference: " << mean[mod][i] << " ns | "
+                      << "Mean channel difference: " << -mean[mod][i] << " ns | "
                       << "Mean frequency: " << mean_frq[mod][i] / 1e3 << '\n';
         }
     }
